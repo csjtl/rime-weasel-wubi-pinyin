@@ -53,6 +53,9 @@ speller:
   # initials: "zyxwvutsrqponmlkjihgfedcba-./'"
   delimiter: " "
   algebra:
+    - xlit/āáǎàōóǒòēéěèīíǐìūúǔùǖǘǚǜü/aaaaooooeeeeiiiiuuuuvvvvv/
+    - xform/ń|ň|ǹ/en/
+    - xform/ńg|ňg|ǹg/en/
     - derive/^\|$/ /
     - xform/⌗.*$//
     # - derive/(.)[;']$/$1/
