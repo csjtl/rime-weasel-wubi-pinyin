@@ -1,6 +1,6 @@
 # weasel.yaml 支持的所有选项及注释，用于配置参考
  #感谢 @[Mirtle](https://github.com/mirtlecn) 整理
- #定制化文档 https://github.com/rime/weasel/wiki/Weasel-定製化
+ #定制化文档 https://github.com/rime/weasel/wiki/Weasel-定制化
 
  #在用户使用「输入法设定」调整设置时，小狼毫会格式化 weasel.custom.yaml，删除所有注释。
  #目前建议的自定义方法：复制此本文件并修改，之后在 weasel.custom.yaml 用 `__include` 引入。示例 weasel.custom.yaml 如下：
@@ -18,8 +18,8 @@
 style:
   color_scheme: red # 配色方案
   #color_scheme_dark: purity_of_form_custom
-  # 字体设定  # 字体1[:起始码位:结束码位:字重:字形][,字体2 ...]，详情请参考 <https://github.com/rime/weasel/wiki/字體設定>  # 字体会依次 fallback
-  font_face: "Segoe UI Emoji:30:39, Noto Color Emoji, Plangothic P1, Plangothic P2, Noto Sans SC" # 全局字体。为了让部分复合型 emoji 正常显示，可以将 emoji 字体放在首位，并指定起始码位防止影响其他字符。refer <https://github.com/rime/weasel/issues/932> 例如：# "Segoe UI Emoji:20:39:bold:italic, Noto Color Emoji SVG:80, Arial:600:6ff, Segoe UI Emoji:80, LXGW Wenkai Narrow"
+  # 字体设定  # 字体1[:起始码位:结束码位:字重:字形][,字体2 ...]，详情请参考 <https://github.com/rime/weasel/wiki/字体设定>  # 字体会依次 fallback
+  font_face: "Segoe UI Emoji:30:39, Noto Color Emoji, 遍黑体P1, 遍黑体P2, MaYuan, Noto Sans SC" # 全局字体。为了让部分复合型 emoji 正常显示，可以将 emoji 字体放在首位，并指定起始码位防止影响其他字符。refer <https://github.com/rime/weasel/issues/932> 例如：# "Segoe UI Emoji:20:39:bold:italic, Noto Color Emoji SVG:80, Arial:600:6ff, Segoe UI Emoji:80, LXGW Wenkai Narrow"
   label_font_face: "Microsoft YaHei" # 标签字体
   comment_font_face: "Microsoft YaHei" # 注释字体
   font_point: 20 # 全局字体大小
@@ -90,7 +90,7 @@ preset_color_schemes:
     # 选中的候选词区
     hilited_candidate_back_color: 0xfff44336 # 背景
     hilited_candidate_text_color: 0xffffffff # 文字
-    hilited_mark_color: #激活標識
+    hilited_mark_color: #激活标识
     hilited_label_color: 0xffffffff # 标签序号
     hilited_comment_text_color: 0xffffffff # 注释/编码提示
     hilited_candidate_border_color: # 边框
@@ -155,6 +155,9 @@ preset_color_schemes:
     name: win10_weasel
     shadow_color: 0x20000000
     text_color: 0x000000
+    inline_preedit: false
+    prevpage_color: 0xff161616
+    nextpage_color: 0xff161616
   win11_weasel:
     back_color: 0xF9F9F9
     border_color: 0xE7E7E7
@@ -221,8 +224,8 @@ app_options:
  #    __include: "weasel_style:/schemes_purity"
 style_purity:
   color_scheme: purity # 配色方案
-  name: "純粹的形式／Purity of Form Custom"
-  author: 雨過之後、佛振
+  name: "纯粹的形式／Purity of Form Custom"
+  author: 雨过之後、佛振
   # 如果将字体设置为 PingFangSC-Regular
   # 会让 🈶🈚️🉑🈲🉐 这几个 Emoji 失去彩色效果，留空反而可以显示。。。
   font_face: ""                   # 字体及大小
@@ -253,8 +256,8 @@ schemes_purity:
     # hilited_back_color:                   # 选中拼音底色 （inline_preedit: false）
     # border_color:                         # 外边框颜色
   purity_of_form:
-    name: 純粹的形式／Purity of Form
-    author: 雨過之後、佛振
+    name: 纯粹的形式／Purity of Form
+    author: 雨过之後、佛振
     text_color: 0xc2c2c2
     back_color: 0x444444
     candidate_text_color: 0xeeeeee
@@ -264,7 +267,7 @@ schemes_purity:
     hilited_candidate_back_color: 0xfafafa
     comment_text_color: 0x808080
   purity_of_essence:
-    name: 純粹的本質／Purity of Essence
+    name: 纯粹的本质／Purity of Essence
     author: 佛振
     text_color: 0x2c2ccc
     back_color: 0xfafafa

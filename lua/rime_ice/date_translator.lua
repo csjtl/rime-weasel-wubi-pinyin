@@ -12,11 +12,11 @@ local M = {}
 function M.init(env)
     local config = env.engine.schema.config
     env.name_space = env.name_space:gsub('^*', '')
-    M.date = config:get_string(env.name_space .. '/date') or 'rq'
-    M.time = config:get_string(env.name_space .. '/time') or 'sj'
-    M.week = config:get_string(env.name_space .. '/week') or 'xq'
-    M.datetime = config:get_string(env.name_space .. '/datetime') or 'dt'
-    M.timestamp = config:get_string(env.name_space .. '/timestamp') or 'ts'
+    M.date = config:get_string(env.name_space .. '/date') or 'RQ'
+    M.time = config:get_string(env.name_space .. '/time') or 'SJ'
+    M.week = config:get_string(env.name_space .. '/week') or 'XQ'
+    M.datetime = config:get_string(env.name_space .. '/datetime') or 'DT'
+    M.timestamp = config:get_string(env.name_space .. '/timestamp') or 'TS'
 end
 
 function M.func(input, seg, env)

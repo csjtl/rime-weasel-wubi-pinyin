@@ -1,9 +1,9 @@
 customization:
   distribution_code_name: Weasel
-  distribution_version: 0.16.3
+  distribution_version: 0.17.4
   generator: "Weasel::UIStyleSettings"
-  modified_time: "Sat Nov  2 17:46:09 2024"
-  rime_version: 1.11.2
+  modified_time: "Mon Feb  2 21:18:29 2026"
+  rime_version: 1.13.1
 patch:
   "app_options/=":
     __include: "weasel_style:/app_options"
@@ -11,4 +11,4 @@ patch:
     __include: "weasel_style:/preset_color_schemes"
   "style/=":
     __include: "weasel_style:/style"
-  "style/color_scheme": win11_weasel
+  "style/color_scheme": win10_weasel

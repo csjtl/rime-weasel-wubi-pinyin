@@ -1,14 +1,13 @@
 customization:
   distribution_code_name: Weasel
-  distribution_version: 0.16.3
+  distribution_version: 0.17.0
   generator: "Rime::SwitcherSettings"
-  modified_time: "Sun Oct 13 14:07:03 2024"
-  rime_version: 1.11.2
+  modified_time: "Fri May 23 20:29:51 2025"
+  rime_version: 1.13.1
 patch:
   menu:
     page_size: 9
   schema_list:
     - {schema: focus_en}
     - {schema: five_strokes}
-    - {schema: rime_ice}
-    - {schema: easy_en_super}
+    - {schema: focus_pinyin}

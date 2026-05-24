@@ -27,7 +27,7 @@ import_tables:
    - dicts/dicts_cn/pinyin/pinyin_xiehouyu
    - dicts/dicts_cn/pinyin/others   # 一些杂项
 
-# - dicts/emoji/emoji_cd_pin
+   - dicts/emoji/emoji_cd_pin
    - dicts/dicts_cn/pinyin/units
    - dicts/dicts_cn/pinyin/abbreviation
 

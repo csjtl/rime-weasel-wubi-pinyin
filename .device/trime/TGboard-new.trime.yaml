@@ -39,7 +39,7 @@ var_key: #var_value
   4_03: &enter_round 20 #回车键圆角
 
 wb:
-  1: &main_kts_wb 25 #五笔键盘按键文字大小
+  #1: &main_kts_wb 25 #五笔键盘按键文字大小
   2: &ktc_wb 0xFFB0C6FF
   #3: &ksc_wb 0xFF000000
   3: &ksc_wb 0xFFFFFFFF
@@ -107,13 +107,13 @@ var_colors:
 
 style:
  #功能开关++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-  auto_caps: true #自动句首大写:true|false
+  auto_caps: false #自动句首大写:true|false
   #candidate_use_cursor: false #高亮候选项
   #horizontal: true #水平模式
   #keyboards: [.default, five_strokes, mini, letter, us_intl, number, edit_kb]
   #proximity_correction: true #按键纠错
   #background_folder: #背景图保存在background目录下的哪个子目录
-  reset_ascii_mode_on_focus_change: true #显示键盘时重置为中文状态flase记忆收起键盘时中英模式最后的状态，true不记忆最后的状态，预设键盘不指定模式时，默认为英文状态
+  reset_ascii_mode_on_focus_change: false #显示键盘时重置为中文状态flase记忆收起键盘时中英模式最后的状态，true不记忆最后的状态，预设键盘不指定模式时，默认为英文状态
   #latin_locale: en_US #西文语言
   #locale: zh_CN #缺省语言 zh_TW,zh_CN,zh_HK,""
   #speech_opencc_config: none #语音输入简繁转换
@@ -121,12 +121,12 @@ style:
   text_font: [latin.ttf] #编码字体
   #text_size: 18 #正在输入编码的区域字号
   comment_font: [comment.ttf] #编码提示字体
-  comment_text_size: 10 #侯选区上部字体大小（状态开关上部， 侯选字上部编码提示）
-  candidate_text_size: 25  #候选字号（状态栏/候选栏）
+  comment_text_size: 15 #侯选区上部字体大小（状态开关上部， 侯选字上部编码提示）
+  candidate_text_size: 30  #候选字号（状态栏/候选栏）
   label_font: [label.ttf] #编标签字体
   key_long_text_size: 16 #长标签字号
-  symbol_font: [symbol.ttf, MaYuan-Regular.otf] #符号字体(包括特殊符号tab键)
-  symbol_text_size: 15 #按键上方符号字号
+  symbol_font: [MaYuan-Regular.otf, symbol.ttf] #符号字体(包括特殊符号tab键)
+  symbol_text_size: 15 #按键上方符号字号/助记字号
   candidate_font: #候选字体  # List
     - PlangothicP1-Regular.otf
     - PlangothicP2-Regular.otf
@@ -147,7 +147,7 @@ style:
   candidate_view_height: 45 #候选区高度
   #comment_on_top: true #编码提示在上方或右侧
   comment_height: 12 #编码提示区高度（仅 top 模式约束高度，其余模式与 candidate_view_height 无区别）（区显，编码显示补全区）
-  comment_position: overlay #编码提示布局位置：right / top / overlay
+  comment_position: top #编码提示布局位置：right / top / overlay
   comment_vertical_bias: 0.0 #编码提示垂直偏移位置（仅 overlay 模式使用，需要间隙空间足够，范围 0.0~1.0，0.0=top，0.5=center，1.0=bottom）
   horizontal_gap: *h_gap #键水平间距
   #background_dim_amount: 0.5
@@ -1155,6 +1155,16 @@ preset_keys:
   TrimeCmp: {label: 同文組件, send: function, command: run, option: "com.osfans.trime/.ui.main.MainActivity"} #運行程序指定組件: run 包名/組件名
   Homepage: {label: 同文主页, send: function, command: run, option: "https://github.com/osfans/trime"} #查看网页: run 网址
   CommitHomepage: {label: 同文网址, commit: https://github.com/osfans/trime} #直接上屏
+
+ #%s         爲当前字符
+ #%1$s    爲当前字符
+ #%2$s    爲当前输入的编码
+ #%3$s    爲光标前字符
+ #%4$s    爲光标前所有字符
+ #%4s      爲光标前所有字符
+ #- 命令直通車：漢字爲%s或%1$s，編碼爲%2$s
+ #- 剛上屏字%1，光標前字%3
+ #- 光標前所有字%4$s
   Wiki: {label: 上屏-维基, send: function, command: run, option: "https://zh.wikipedia.org/wiki/%s"} #搜索网页: %s或者%1$s爲当前字符
   Wiki2: {label: 2-维基, send: function, command: run, option: "https://zh.wikipedia.org/wiki/%2$s"}
   Wiki3: {label: 光标-维基, send: function, command: run, option: "https://zh.wikipedia.org/wiki/%3$s"}
@@ -1168,12 +1178,11 @@ preset_keys:
   Zdic: {label: 汉典, send: function, command: run, option: "http://www.zdic.net/sousuo/?q=%1$s"} #搜索网页: %s或者%1$s爲当前字符
   Zdic2: {label: 汉典, send: function, command: run, option: "http://www.zdic.net/sousuo/?q=%2$s"} #搜索网页: %2$s爲当前输入的编码
   WebSearch: {label: 搜索網頁, command: web_search, option: "%3$s"} #搜索，其他view、dial、edit、search等intent，參考安卓的intent文檔：https://developer.android.com/reference/android/content/Intent.html
-  
   #WebSearch: {label: 搜索網頁, command: WEB_SEARCH, option: "%1$s"}
   #Search: { label: "系统搜索", command: "intent", intent: "android.intent.action.WEB_SEARCH", data: "?q=%s" }
   SearchWeb: {label: 网页搜索, text: "{copy}{EdgeApp}", option: "%1$s"}
-  
   Search: {label: 搜索, send: function, command: search, option: "%1$s"} #搜索短信、字典等
+
   Share: {label: 分享, command: send, option: "%s"} #分享指定文本: %s或者%1$s爲当前字符
   Deploy: {label: 部署, command: broadcast, option: "com.osfans.trime.action.DeployActivity"}
   Sync: {label: 同步, command: broadcast, option: "com.osfans.trime.action.SYNC_USER_DATA"}
@@ -1413,37 +1422,37 @@ preset_keyboards:
       - {click: KP_9, long_click: "9", key_symbol_offset_x: *ksox_e, key_back_color: b_h0, key_text_color: t_h0, key_text_size: *main_kts}
       - {click: KP_0, long_click: "0", key_symbol_offset_x: *ksox_e, key_back_color: b_h0, key_text_color: t_h0, key_text_size: *main_kts}
 
-      - {label: 我 Q, click: q, label_symbol: "", popup: [Excel_Tab, Tab], swipe_up: Escape, key_back_color: b_h1, key_text_color: *ktc_wb, hint: "         􀂀\n􀂁􀂂􀂃􀂄􀂅\n􀂆􀂇􀂈 􀂉\n􀂊􀂋􀂌􀂍", key_text_offset_x: *ktox_wb, key_text_offset_y: *ktoy_wb, key_hint_offset_x: *khox_wb, key_hint_offset_y: *khoy_wb, key_symbol_color: *ksc_wb}
-      - {label: 人 W, click: w, label_symbol: "", popup: [], swipe_up: Escape, key_back_color: b_h1, key_text_color: *ktc_wb, hint: "         􀁸\n􀁹    􀁺\n􀁻    􀁼\n􀁽􀁾 􀁿", key_text_offset_x: *ktox_wb, key_text_offset_y: *ktoy_wb, key_hint_offset_x: *khox_wb, key_hint_offset_y: *khoy_wb, key_symbol_color: *ksc_wb}
-      - {label: 有 E, click: e, label_symbol: "", popup: [Escape], swipe_up: Escape,, key_back_color: b_h1, key_text_color: *ktc_wb, hint: "         􀁬\n􀁪 􀁫􀁮 􀁮􀁯\n􀁰􀁱􀁲􀁳\n􀁴 􀁵􀁶 􀁷", key_text_offset_x: *ktox_wb, key_text_offset_y: *ktoy_wb, key_hint_offset_x: *khox_wb, key_hint_offset_y: *khoy_wb, key_symbol_color: *ksc_wb}
-      - {label: 的 R, click: r, label_symbol: "", popup: [], swipe_up: Escape,,  key_back_color: b_h1, key_text_color: *ktc_wb, hint: "         􀁣\n􀁠  􀁡  􀁢\n􀁤  􀁥  􀁦\n􀁧  􀁨  􀁩", key_text_offset_x: *ktox_wb, key_text_offset_y: *ktoy_wb, key_hint_offset_x: *khox_wb, key_hint_offset_y: *khoy_wb, key_symbol_color: *ksc_wb}
-      - {label: 和 T, click: t, label_symbol: "", popup: [], swipe_up: Escape,,  key_back_color: b_h1, key_text_color: *ktc_wb, hint: "         􀁚\n􀁘  􀁙  􀁛\n􀁜    􀁝\n􀁞    􀁟", key_text_offset_x: *ktox_wb, key_text_offset_y: *ktoy_wb, key_hint_offset_x: *khox_wb, key_hint_offset_y: *khoy_wb, key_symbol_color: *ksc_wb}
-      - {label: 主 Y, click: y, label_symbol: "", popup: [], swipe_up: Escape,,  key_back_color: b_h1, key_text_color: *ktc_wb, hint: "         􀂐\n􀂎  􀂏  􀂑\n􀂒    􀂓\n􀂔    􀂕", key_text_offset_x: *ktox_wb, key_text_offset_y: *ktoy_wb, key_hint_offset_x: *khox_wb, key_hint_offset_y: *khoy_wb, key_symbol_color: *ksc_wb}
-      - {label: 产 U, click: u, label_symbol: "", popup: [], swipe_up: Escape,,  key_back_color: b_h1, key_text_color: *ktc_wb, hint: "         􀂙\n􀂖  􀂗  􀂘  􀂚\n􀂛  􀂜  􀂝\n􀂞  􀂟  􀂠", key_text_offset_x: *ktox_wb, key_text_offset_y: *ktoy_wb, key_hint_offset_x: *khox_wb, key_hint_offset_y: *khoy_wb, key_symbol_color: *ksc_wb}
-      - {label: 不 I, click: i, label_symbol: "", popup: [], swipe_up: Escape,,  key_back_color: b_h1, key_text_color: *ktc_wb, hint: "         􀂣\n􀂡  􀂢  􀂤\n􀂥 􀂦 􀂧 􀂨\n􀂩 􀂪 􀂫􀂬", key_text_offset_x: *ktox_wb, key_text_offset_y: *ktoy_wb, key_hint_offset_x: *khox_wb, key_hint_offset_y: *khoy_wb, key_symbol_color: *ksc_wb}
-      - {label: 为 O, click: o, label_symbol: "", popup: [], swipe_up: Escape,,  key_back_color: b_h1, key_text_color: *ktc_wb, hint: "         􀂮\n􀂭 􀂯 􀂰\n􀂱 􀂲 􀂳\n􀂴    􀂵", key_text_offset_x: *ktox_wb, key_text_offset_y: *ktoy_wb, key_hint_offset_x: *khox_wb, key_hint_offset_y: *khoy_wb, key_symbol_color: *ksc_wb}
-      - {label: 这 P, click: p, label_symbol: "", popup: [], swipe_up: Escape,,  key_back_color: b_h1, key_text_color: *ktc_wb, hint: "         􀂶\n􀂷    􀂸\n􀂹    􀂺\n􀂻    􀂼", key_text_offset_x: *ktox_wb, key_text_offset_y: *ktoy_wb, key_hint_offset_x: *khox_wb, key_hint_offset_y: *khoy_wb, key_symbol_color: *ksc_wb}
+      - {label: 我 Q, click: q, label_symbol: "", popup: [Excel_Tab, Tab], swipe_up: Escape, key_back_color: b_h1, key_text_color: *ktc_wb, hint: "       􀂀\n􀂁􀂂􀂃􀂄􀂅\n􀂆􀂇􀂈 􀂉\n􀂊􀂋􀂌􀂍", key_text_offset_x: *ktox_wb, key_text_offset_y: *ktoy_wb, key_hint_offset_x: *khox_wb, key_hint_offset_y: *khoy_wb, key_symbol_color: *ksc_wb}
+      - {label: 人 W, click: w, label_symbol: "", popup: [], swipe_up: Escape, key_back_color: b_h1, key_text_color: *ktc_wb, hint: "       􀁸\n􀁹    􀁺\n􀁻    􀁼\n􀁽􀁾 􀁿", key_text_offset_x: *ktox_wb, key_text_offset_y: *ktoy_wb, key_hint_offset_x: *khox_wb, key_hint_offset_y: *khoy_wb, key_symbol_color: *ksc_wb}
+      - {label: 有 E, click: e, label_symbol: "", popup: [Escape], swipe_up: Escape,, key_back_color: b_h1, key_text_color: *ktc_wb, hint: "       􀁬\n􀁪 􀁫􀁮 􀁮􀁯\n􀁰􀁱􀁲􀁳\n􀁴 􀁵􀁶 􀁷", key_text_offset_x: *ktox_wb, key_text_offset_y: *ktoy_wb, key_hint_offset_x: *khox_wb, key_hint_offset_y: *khoy_wb, key_symbol_color: *ksc_wb}
+      - {label: 的 R, click: r, label_symbol: "", popup: [], swipe_up: Escape,,  key_back_color: b_h1, key_text_color: *ktc_wb, hint: "       􀁣\n􀁠 􀁡 􀁢\n􀁤 􀁥 􀁦\n􀁧 􀁨 􀁩", key_text_offset_x: *ktox_wb, key_text_offset_y: *ktoy_wb, key_hint_offset_x: *khox_wb, key_hint_offset_y: *khoy_wb, key_symbol_color: *ksc_wb}
+      - {label: 和 T, click: t, label_symbol: "", popup: [], swipe_up: Escape,,  key_back_color: b_h1, key_text_color: *ubuntu_o, hint: "       􀁚\n􀁘  􀁙  􀁛\n􀁜    􀁝\n􀁞    􀁟", key_text_offset_x: *ktox_wb, key_text_offset_y: *ktoy_wb, key_hint_offset_x: *khox_wb, key_hint_offset_y: *khoy_wb, key_symbol_color: *ksc_wb}
+      - {label: 主 Y, click: y, label_symbol: "", popup: [], swipe_up: Escape,,  key_back_color: b_h1, key_text_color: *ubuntu_o, hint: "       􀂐\n􀂎  􀂏  􀂑\n􀂒    􀂓\n􀂔    􀂕", key_text_offset_x: *ktox_wb, key_text_offset_y: *ktoy_wb, key_hint_offset_x: *khox_wb, key_hint_offset_y: *khoy_wb, key_symbol_color: *ksc_wb}
+      - {label: 产 U, click: u, label_symbol: "", popup: [], swipe_up: Escape,,  key_back_color: b_h1, key_text_color: *ktc_wb, hint: "       􀂙\n􀂖 􀂗 􀂘 􀂚\n􀂛 􀂜  􀂝\n􀂞 􀂟 􀂠", key_text_offset_x: *ktox_wb, key_text_offset_y: *ktoy_wb, key_hint_offset_x: *khox_wb, key_hint_offset_y: *khoy_wb, key_symbol_color: *ksc_wb}
+      - {label: 不 I, click: i, label_symbol: "", popup: [], swipe_up: Escape,,  key_back_color: b_h1, key_text_color: *ktc_wb, hint: "       􀂣\n􀂡  􀂢  􀂤\n􀂥 􀂦 􀂧 􀂨\n􀂩 􀂪 􀂫􀂬", key_text_offset_x: *ktox_wb, key_text_offset_y: *ktoy_wb, key_hint_offset_x: *khox_wb, key_hint_offset_y: *khoy_wb, key_symbol_color: *ksc_wb}
+      - {label: 为 O, click: o, label_symbol: "", popup: [], swipe_up: Escape,,  key_back_color: b_h1, key_text_color: *ktc_wb, hint: "       􀂮\n􀂭 􀂯 􀂰\n􀂱 􀂲 􀂳\n􀂴    􀂵", key_text_offset_x: *ktox_wb, key_text_offset_y: *ktoy_wb, key_hint_offset_x: *khox_wb, key_hint_offset_y: *khoy_wb, key_symbol_color: *ksc_wb}
+      - {label: 这 P, click: p, label_symbol: "", popup: [], swipe_up: Escape,,  key_back_color: b_h1, key_text_color: *ktc_wb, hint: "       􀂶\n􀂷   􀂸\n􀂹   􀂺\n􀂻   􀂼", key_text_offset_x: *ktox_wb, key_text_offset_y: *ktoy_wb, key_hint_offset_x: *khox_wb, key_hint_offset_y: *khoy_wb, key_symbol_color: *ksc_wb}
 
       - {width: 5}
-      - {label: 工 A, click: a, label_symbol: "", popup: [select_all], swipe_up: Escape,, key_back_color: b_h2, key_text_color: *ktc_wb, hint: "         􀀜\n􀀝􀀞􀀟􀀠\n􀀡 􀀢􀀣􀀤\n􀀥􀀦􀀧􀀨", key_text_offset_x: *ktox_wb, key_text_offset_y: *ktoy_wb, key_hint_offset_x: *khox_wb, key_hint_offset_y: *khoy_wb, key_symbol_color: *ksc_wb}
-      - {label: 要 S, click: s, label_symbol: "", popup: [save], swipe_up: Escape,,  key_back_color: b_h2, key_text_color: *ktc_wb, hint: "         􀀘\n􀀙\n􀀚\n􀀛", key_text_offset_x: *ktox_wb, key_text_offset_y: *ktoy_wb, key_hint_offset_x: *khox_wb, key_hint_offset_y: *khoy_wb, key_symbol_color: *ksc_wb}
-      - {label: 在 D, click: d, label_symbol: "", popup: [], swipe_up: Escape,, key_back_color: b_h2, key_text_color: *ktc_wb, hint: "         􀀒\n􀀐    􀀑\n􀀓    􀀔\n􀀕  􀀖  􀀗", key_text_offset_x: *ktox_wb, key_text_offset_y: *ktoy_wb, key_hint_offset_x: *khox_wb, key_hint_offset_y: *khoy_wb, key_symbol_color: *ksc_wb}
-      - {label: 地 F, click: f, label_symbol: "", popup: [], swipe_up: Escape,,  key_back_color: b_h2, key_text_color: *ktc_wb, hint: "         􀀈\n􀀇􀀉􀀊\n􀀋􀀌􀀍\n􀀎    􀀏", key_text_offset_x: *ktox_wb, key_text_offset_y: *ktoy_wb, key_hint_offset_x: *khox_wb, key_hint_offset_y: *khoy_wb, key_symbol_color: *ksc_wb}
-      - {label: 一 G, click: g, label_symbol: "", popup: [], swipe_up: Escape,,  key_back_color: b_h2, key_text_color: *ktc_wb, hint: "         􀀂\n􀀀    􀀁\n􀀃    􀀄\n􀀅    􀀆", key_text_offset_x: *ktox_wb, key_text_offset_y: *ktoy_wb, key_hint_offset_x: *khox_wb, key_hint_offset_y: *khoy_wb, key_symbol_color: *ksc_wb}
-      - {label: 上 H, click: h, label_symbol: "", popup: [], swipe_up: Escape,,  key_back_color: b_h2, key_text_color: *ktc_wb, hint: "         􀀫\n􀀩 􀀪 􀀬\n􀀭 􀀮 􀀯\n􀀰 􀀱􀀲􀀳", key_text_offset_x: *ktox_wb, key_text_offset_y: *ktoy_wb, key_hint_offset_x: *khox_wb, key_hint_offset_y: *khoy_wb, key_symbol_color: *ksc_wb}
-      - {label: 是 J, click: j, label_symbol: "", popup: [], swipe_up: Escape,,  key_back_color: b_h2, key_text_color: *ktc_wb, hint: "         􀀸\n􀀴 􀀵 􀀶 􀀷\n􀀹    􀀺\n􀀻􀀼 􀀽", key_text_offset_x: *ktox_wb, key_text_offset_y: *ktoy_wb, key_hint_offset_x: *khox_wb, key_hint_offset_y: *khoy_wb, key_symbol_color: *ksc_wb}
-      - {label: 中 K, click: k, label_symbol: "", popup: [], swipe_up: Escape,,  key_back_color: b_h2, key_text_color: *ktc_wb, hint: "         􀁁\n􀀾\n􀀿\n􀁀", key_text_offset_x: *ktox_wb, key_text_offset_y: *ktoy_wb, key_hint_offset_x: *khox_wb, key_hint_offset_y: *khoy_wb, key_symbol_color: *ksc_wb}
-      - {label: 国 L, click: l, label_symbol: "", popup: [], swipe_up: Escape,,  key_back_color: b_h2, key_text_color: *ktc_wb, hint: "         􀁃\n􀁂􀁄􀁅􀁆\n􀁇􀁈􀁉􀁊\n􀁋􀁌􀁍􀁎", key_text_offset_x: *ktox_wb, key_text_offset_y: *ktoy_wb, key_hint_offset_x: *khox_wb, key_hint_offset_y: *khoy_wb, key_symbol_color: *ksc_wb}
+      - {label: 工 A, click: a, label_symbol: "", popup: [select_all], swipe_up: Escape,, key_back_color: b_h2, key_text_color: *ktc_wb, hint: "       􀀜\n􀀝􀀞􀀟􀀠\n􀀡 􀀢􀀣􀀤\n􀀥􀀦􀀧􀀨", key_text_offset_x: *ktox_wb, key_text_offset_y: *ktoy_wb, key_hint_offset_x: *khox_wb, key_hint_offset_y: *khoy_wb, key_symbol_color: *ksc_wb}
+      - {label: 要 S, click: s, label_symbol: "", popup: [save], swipe_up: Escape,,  key_back_color: b_h2, key_text_color: *ktc_wb, hint: "       􀀘\n􀀙\n􀀚\n􀀛", key_text_offset_x: *ktox_wb, key_text_offset_y: *ktoy_wb, key_hint_offset_x: *khox_wb, key_hint_offset_y: *khoy_wb, key_symbol_color: *ksc_wb}
+      - {label: 在 D, click: d, label_symbol: "", popup: [], swipe_up: Escape,, key_back_color: b_h2, key_text_color: *ktc_wb, hint: "       􀀒\n􀀐   􀀑\n􀀓   􀀔\n􀀕 􀀖 􀀗", key_text_offset_x: *ktox_wb, key_text_offset_y: *ktoy_wb, key_hint_offset_x: *khox_wb, key_hint_offset_y: *khoy_wb, key_symbol_color: *ksc_wb}
+      - {label: 地 F, click: f, label_symbol: "", popup: [], swipe_up: Escape,,  key_back_color: key_fj_back_color, key_text_color: *ktc_wb, hint: "       􀀈\n􀀇􀀉􀀊\n􀀋􀀌􀀍\n􀀎    􀀏", key_text_offset_x: *ktox_wb, key_text_offset_y: *ktoy_wb, key_hint_offset_x: *khox_wb, key_hint_offset_y: *khoy_wb, key_symbol_color: *ksc_wb}
+      - {label: 一 G, click: g, label_symbol: "", popup: [], swipe_up: Escape,,  key_back_color: b_h2, key_text_color: *ubuntu_o, hint: "       􀀂\n􀀀    􀀁\n􀀃    􀀄\n􀀅    􀀆", key_text_offset_x: *ktox_wb, key_text_offset_y: *ktoy_wb, key_hint_offset_x: *khox_wb, key_hint_offset_y: *khoy_wb, key_symbol_color: *ksc_wb}
+      - {label: 上 H, click: h, label_symbol: "", popup: [], swipe_up: Escape,,  key_back_color: b_h2, key_text_color: *ubuntu_o, hint: "       􀀫\n􀀩 􀀪 􀀬\n􀀭 􀀮 􀀯\n􀀰 􀀱􀀲􀀳", key_text_offset_x: *ktox_wb, key_text_offset_y: *ktoy_wb, key_hint_offset_x: *khox_wb, key_hint_offset_y: *khoy_wb, key_symbol_color: *ksc_wb}
+      - {label: 是 J, click: j, label_symbol: "", popup: [], swipe_up: Escape,,  key_back_color: key_fj_back_color, key_text_color: *ktc_wb, hint: "       􀀸\n􀀴 􀀵 􀀶 􀀷\n􀀹    􀀺\n􀀻􀀼 􀀽", key_text_offset_x: *ktox_wb, key_text_offset_y: *ktoy_wb, key_hint_offset_x: *khox_wb, key_hint_offset_y: *khoy_wb, key_symbol_color: *ksc_wb}
+      - {label: 中 K, click: k, label_symbol: "", popup: [], swipe_up: Escape,,  key_back_color: b_h2, key_text_color: *ktc_wb, hint: "       􀁁\n􀀾\n􀀿\n􀁀", key_text_offset_x: *ktox_wb, key_text_offset_y: *ktoy_wb, key_hint_offset_x: *khox_wb, key_hint_offset_y: *khoy_wb, key_symbol_color: *ksc_wb}
+      - {label: 国 L, click: l, label_symbol: "", popup: [], swipe_up: Escape,,  key_back_color: b_h2, key_text_color: *ktc_wb, hint: "       􀁃\n􀁂􀁄􀁅􀁆\n􀁇􀁈􀁉􀁊\n􀁋􀁌􀁍􀁎", key_text_offset_x: *ktox_wb, key_text_offset_y: *ktoy_wb, key_hint_offset_x: *khox_wb, key_hint_offset_y: *khoy_wb, key_symbol_color: *ksc_wb}
       - {width: 5}
 
       - {click: Shift_L, label_symbol: " ", long_click: Shift_L, double_click: Shift_L_double_lock, width: 12, key_text_size: *gnkey_t, hilited_key_back_color: b_enter, key_back_color: b_bs, key_text_color: t_bs}
       - {click: z, label_symbol: "", popup: [], swipe_up: Escape,, key_back_color: b_h3, key_text_color: *ubuntu_o, key_text_size: *main_kts}
-      - {label: 经 X, click: x, label_symbol: "", popup: [cut], swipe_up: Escape,, key_back_color: b_h3, key_text_color: *ktc_wb, hint: "         􀃧\n􀃨    􀃩􀃪\n􀃫 􀃬 􀃭􀃮\n􀃯 􀃰 􀃱􀃲", key_text_offset_x: *ktox_wb, key_text_offset_y: *ktoy_wb, key_hint_offset_x: *khox_wb, key_hint_offset_y: *khoy_wb, key_symbol_color: *ksc_wb}
-      - {label: 以 C, click: c, label_symbol: "", popup: [copy], swipe_up: Escape,, swipe_down: ' ', key_back_color: b_h3, key_text_color: *ktc_wb, hint: "         􀃟\n􀃠    􀃡\n􀃢    􀃣\n􀃤 􀃥 􀃦", key_text_offset_x: *ktox_wb, key_text_offset_y: *ktoy_wb, key_hint_offset_x: *khox_wb, key_hint_offset_y: *khoy_wb, key_symbol_color: *ksc_wb}
-      - {label: 发 V, click: v, label_symbol: "", popup: [paste], swipe_up: Escape,, key_back_color: b_h3, key_text_color: *ktc_wb, hint: "         􀃙\n􀃘    􀃚\n􀃛    􀃜\n􀃝    􀃞", key_text_offset_x: *ktox_wb, key_text_offset_y: *ktoy_wb, key_hint_offset_x: *khox_wb, key_hint_offset_y: *khoy_wb, key_symbol_color: *ksc_wb}
-      - {label: 了 B, click: b, label_symbol: "", popup: [], swipe_up: Escape,,  key_back_color: b_h3, key_text_color: *ktc_wb, hint: "         􀃌\n􀃋 􀃍 􀃎 􀃏\n􀃐 􀃑 􀃒 􀃓\n􀃔􀃕􀃖􀃗", key_text_offset_x: *ktox_wb, key_text_offset_y: *ktoy_wb, key_hint_offset_x: *khox_wb, key_hint_offset_y: *khoy_wb, key_symbol_color: *ksc_wb}
-      - {label: 民 N, click: n, label_symbol: "", popup: [], swipe_up: Escape,,  key_back_color: b_h3, key_text_color: *ktc_wb, hint: "         􀂾\n􀂽􀂿􀃀􀃁􀃂\n􀃃􀃄 􀃅􀃆\n􀃇 􀃈 􀃉􀃊", key_text_offset_x: *ktox_wb, key_text_offset_y: *ktoy_wb, key_hint_offset_x: *khox_wb, key_hint_offset_y: *khoy_wb, key_symbol_color: *ksc_wb}
-      - {label: 同 M, click: m, label_symbol: "", popup: [], swipe_up: Escape,,  key_back_color: b_h3, key_text_color: *ktc_wb, hint: "         􀁏\n􀁐􀁑􀁒\n􀁓    􀁔\n􀁕􀁖􀁗", key_text_offset_x: *ktox_wb, key_text_offset_y: *ktoy_wb, key_hint_offset_x: *khox_wb, key_hint_offset_y: *khoy_wb, key_symbol_color: *ksc_wb}
+      - {label: 经 X, click: x, label_symbol: "", popup: [cut], swipe_up: Escape,, key_back_color: b_h3, key_text_color: *ktc_wb, hint: "       􀃧\n􀃨    􀃩􀃪\n􀃫 􀃬 􀃭􀃮\n􀃯 􀃰 􀃱􀃲", key_text_offset_x: *ktox_wb, key_text_offset_y: *ktoy_wb, key_hint_offset_x: *khox_wb, key_hint_offset_y: *khoy_wb, key_symbol_color: *ksc_wb}
+      - {label: 以 C, click: c, label_symbol: "", popup: [copy], swipe_up: Escape,, swipe_down: ' ', key_back_color: b_h3, key_text_color: *ktc_wb, hint: "       􀃟\n􀃠    􀃡\n􀃢    􀃣\n􀃤 􀃥 􀃦", key_text_offset_x: *ktox_wb, key_text_offset_y: *ktoy_wb, key_hint_offset_x: *khox_wb, key_hint_offset_y: *khoy_wb, key_symbol_color: *ksc_wb}
+      - {label: 发 V, click: v, label_symbol: "", popup: [paste], swipe_up: Escape,, key_back_color: b_h3, key_text_color: *ktc_wb, hint: "       􀃙\n􀃘   􀃚\n􀃛   􀃜\n􀃝   􀃞", key_text_offset_x: *ktox_wb, key_text_offset_y: *ktoy_wb, key_hint_offset_x: *khox_wb, key_hint_offset_y: *khoy_wb, key_symbol_color: *ksc_wb}
+      - {label: 了 B, click: b, label_symbol: "", popup: [], swipe_up: Escape,,  key_back_color: b_h3, key_text_color: *ktc_wb, hint: "       􀃌\n􀃋 􀃍 􀃎 􀃏\n􀃐 􀃑 􀃒 􀃓\n􀃔􀃕􀃖􀃗", key_text_offset_x: *ktox_wb, key_text_offset_y: *ktoy_wb, key_hint_offset_x: *khox_wb, key_hint_offset_y: *khoy_wb, key_symbol_color: *ksc_wb}
+      - {label: 民 N, click: n, label_symbol: "", popup: [], swipe_up: Escape,,  key_back_color: b_h3, key_text_color: *ubuntu_o, hint: "       􀂾\n􀂽􀂿􀃀􀃁􀃂\n􀃃􀃄􀃅􀃆\n􀃇 􀃈􀃉􀃊", key_text_offset_x: *ktox_wb, key_text_offset_y: *ktoy_wb, key_hint_offset_x: *khox_wb, key_hint_offset_y: *khoy_wb, key_symbol_color: *ksc_wb}
+      - {label: 同 M, click: m, label_symbol: "", popup: [], swipe_up: Escape,,  key_back_color: b_h3, key_text_color: *ktc_wb, hint: "       􀁏\n􀁐􀁑􀁒\n􀁓   􀁔\n􀁕􀁖􀁗", key_text_offset_x: *ktox_wb, key_text_offset_y: *ktoy_wb, key_hint_offset_x: *khox_wb, key_hint_offset_y: *khoy_wb, key_symbol_color: *ksc_wb}
       - {click: BackSpace, swipe_right: Delete, key_text_size: *gnkey_t, width: 18, key_back_color: b_bs, key_text_color: t_bs}
 
       - {click: Keyboard_symbols, label_symbol: "主\/方\/配", popup: [Theme_settings, Menu, Color_switch], swipe_up: Escape, width: 15, height: *keyb_end_h, round_corner: *enter_round, key_symbol_offset_y: *ksoy_c, symbol_text_size: *sts_c, key_text_size: *gnkey_t, key_back_color: b_gn, key_text_color: t_gn}

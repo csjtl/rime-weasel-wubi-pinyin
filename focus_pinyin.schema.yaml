@@ -80,15 +80,15 @@ engine:
     - lua_filter@*super_comment_preedit
 # Lua 配置: 日期、时间、星期、ISO 8601、时间戳的触发关键字
 date_translator:
-  date: rq       # 日期： 2022-11-29
-  time: sj       # 时间：  18:13
-  week: xq       # 星期： 星期二
-  datetime: dt   # ISO 8601： 2022-11-29T18:13:11+08:00
-  timestamp: ts  # 时间戳： 1669716794
+  date: RQ       # 日期： 2022-11-29
+  time: SJ       # 时间：  18:13
+  week: XQ       # 星期： 星期二
+  datetime: DT   # ISO 8601： 2022-11-29T18:13:11+08:00
+  timestamp: TS  # 时间戳： 1669716794
 
 
 # Lua 配置：农历的触发关键字
-lunar: nl  # 农历： 二〇二三年冬月二十 癸卯年（兔）冬月二十
+lunar: NL  # 农历： 二〇二三年冬月二十 癸卯年（兔）冬月二十
 
 
 # Lua 配置：长词优先
@@ -214,9 +214,9 @@ key_binder:
 # 拼写设定
 speller:
   # 如果不想让什么标点直接上屏，可以加在 alphabet，或者编辑标点符号为两个及以上的映射
-  alphabet: "zyxwvutsrqponmlkjihgfedcbaZYXWVUTSRQPONMLKJIHGFEDCBA-=/1234567890"
+  alphabet: "zyxwvutsrqponmlkjihgfedcbaZYXWVUTSRQPONMLKJIHGFEDCBA1234567890"
   # initials 定义仅作为始码的按键，排除 ` 让单个的 ` 可以直接上屏
-  initials: "zyxwvutsrqponmlkjihgfedcbaZYXWVUTSRQPONMLKJIHGFEDCBA-=/1234567890^"
+  initials: "zyxwvutsrqponmlkjihgfedcbaZYXWVUTSRQPONMLKJIHGFEDCBA1234567890^"
   delimiter: " '"  # 第一位<空格>是拼音之间的分隔符；第二位<'>表示可以手动输入单引号来分割拼音。
   algebra:
     - xlit/āáǎàōóǒòēéěèīíǐìūúǔùǖǘǚǜü/aaaaooooeeeeiiiiuuuuvvvvv/
