@@ -153,6 +153,7 @@ trime.yaml
    TGboard样式图:
     - 新世纪五笔
     ![New-Century-Wubi](https://github.com/csjtl/rime-NewCenturyWubi-rimerc/assets/55336802/4305adfa-4dc7-4b01-ba00-2d2c25c251cf)
+    - 新世纪五笔码元字根
     - 操作键
     ![操作键](https://github.com/csjtl/rime-NewCenturyWubi-rimerc/assets/55336802/eda076fd-8abf-470f-a992-2dcdbaf73f82)
     - 数字键
@@ -161,6 +162,7 @@ trime.yaml
     ![符号](https://github.com/csjtl/rime-NewCenturyWubi-rimerc/assets/55336802/0def91dc-749d-4c13-bb91-4897efd7a340)
     - 颜文字
     ![颜文字](https://github.com/csjtl/rime-NewCenturyWubi-rimerc/assets/55336802/62627ce4-37e4-48d2-be73-c1b3f87f4418)
+    - markdown
 
 2. TGboard.trime.yaml 初装快速布局调整
 
