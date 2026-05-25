@@ -154,7 +154,7 @@ trime.yaml
     - 新世纪五笔
     ![New-Century-Wubi](https://github.com/csjtl/rime-NewCenturyWubi-rimerc/assets/55336802/4305adfa-4dc7-4b01-ba00-2d2c25c251cf)
     - 新世纪五笔码元字根
-   <img width="1080" height="950" alt="Screenshot_20260525-215042_NMM~2" src="https://github.com/user-attachments/assets/da6351e2-953e-487a-ba9b-fcd5fe7b8320" />
+    ![新世纪五笔码元字根](https://github.com/user-attachments/assets/da6351e2-953e-487a-ba9b-fcd5fe7b8320)
     - 操作键
     ![操作键](https://github.com/csjtl/rime-NewCenturyWubi-rimerc/assets/55336802/eda076fd-8abf-470f-a992-2dcdbaf73f82)
     - 数字键
@@ -164,21 +164,12 @@ trime.yaml
     - 颜文字
     ![颜文字](https://github.com/csjtl/rime-NewCenturyWubi-rimerc/assets/55336802/62627ce4-37e4-48d2-be73-c1b3f87f4418)
     - markdown
-    <img width="1080" height="954" alt="Screenshot_20260525-220351_NMM" src="https://github.com/user-attachments/assets/a00e4a58-51ef-491a-8f06-6105b6840d52" />
-    <img width="1080" height="961" alt="Screenshot_20260525-220358_NMM" src="https://github.com/user-attachments/assets/b694d3c5-f0be-4347-bdc5-a8ba44373df4" />
-    <img width="1080" height="961" alt="Screenshot_20260525-220402_NMM" src="https://github.com/user-attachments/assets/2e6a7b8e-e0fc-44d6-b7bb-0711dda680d1" />
-    <img width="1080" height="950" alt="Screenshot_20260525-220406_NMM" src="https://github.com/user-attachments/assets/00c4359c-d3e8-47e4-80b2-706ea3e4e352" />
-    <img width="1080" height="945" alt="Screenshot_20260525-220412_NMM" src="https://github.com/user-attachments/assets/fb563496-6ff4-47fb-a547-72b1b2e0bd75" />
-    <img width="1080" height="956" alt="Screenshot_20260525-220416_NMM" src="https://github.com/user-attachments/assets/cefc4d9f-982e-45de-9906-b0ea240a98d6" />
-
-
-
-
-
-
-
-    
-
+    ![markdown](https://github.com/user-attachments/assets/a00e4a58-51ef-491a-8f06-6105b6840d52)
+    ![markdown](https://github.com/user-attachments/assets/b694d3c5-f0be-4347-bdc5-a8ba44373df4)
+    ![markdown](https://github.com/user-attachments/assets/2e6a7b8e-e0fc-44d6-b7bb-0711dda680d1)
+    ![markdown](https://github.com/user-attachments/assets/00c4359c-d3e8-47e4-80b2-706ea3e4e352)
+    ![markdown](https://github.com/user-attachments/assets/fb563496-6ff4-47fb-a547-72b1b2e0bd75)
+    ![markdown](https://github.com/user-attachments/assets/cefc4d9f-982e-45de-9906-b0ea240a98d6)
 
 2. TGboard.trime.yaml 初装快速布局调整
 
