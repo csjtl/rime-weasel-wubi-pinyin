@@ -68,8 +68,8 @@ engine:
     - uniquifier
 
 speller:
-  alphabet: "zyxwvutsrqponmlkjihgfedcbaZYXWVUTSRQPONMLKJIHGFEDCBA-=/"
-  initials: "zyxwvutsrqponmlkjihgfedcbaZYXWVUTSRQPONMLKJIHGFEDCBA-=/"
+  alphabet: "zyxwvutsrqponmlkjihgfedcbaZYXWVUTSRQPONMLKJIHGFEDCBA"
+  initials: "zyxwvutsrqponmlkjihgfedcbaZYXWVUTSRQPONMLKJIHGFEDCBA"
   delimiter: " ;'"  #上屛时的音节间分音符
   #max_code_length: 4  # 四码顶字上屏
   auto_select: false    #自动上屏
@@ -85,12 +85,16 @@ translator:
   enable_charset_filter: true     #字符集过滤
   enable_sentence: false          #自动造句
   enable_encoder: true           #自动造词
-  encode_commit_history: true     #上屏词自动成词
+  encode_commit_history: true     #是否对已上屏词自动成词（仅 table_translator 有效）
   enable_completion: true        #提示没有输入完整编码的字
   sentence_over_completion: false  #在没有全码对应字而仅有逐键提示时也开启智能组词
-  max_phrase_length: 4            #自动成词词长
+  max_phrase_length: 10            #自动成词词长
   disable_user_dict_for_patterns:  #禁止某编码录入用户词典
-    - "^z.*$"
+    - "^[A-Zz].*$"
+  preedit_format:                       # 上屏码自定义
+    #- xform/.+//
+  comment_format:                       # 提示码自定义
+    #- xform/.+//                        # 当前默认不提示编码，消除所有候选词后的提示码
 
 reverse_lookup:
   dictionary: focus_pinyin
@@ -101,6 +105,8 @@ reverse_lookup:
     - xform/([nl])v/$1ü/
     - xform/([nl])ue/$1üe/
     - xform/([jqxy])v/$1u/
+  comment_format:
+    - "xform/\\s+/ /"  # 删除所有空白字符（包括空格、制表符等）
 
 punctuator:
   import_preset: default

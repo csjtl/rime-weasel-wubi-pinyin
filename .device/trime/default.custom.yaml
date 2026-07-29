@@ -1,8 +1,8 @@
 customization:
   distribution_code_name: trime
-  distribution_version: "v3.3.8-34-g1044be24"
+  distribution_version: "v3.3.10-4-gb7500a00"
   generator: "Rime::SwitcherSettings"
-  modified_time: "Mon Feb  9 12:37:29 2026"
+  modified_time: "Thu Jun  4 14:15:39 2026"
   rime_version: 1.16.1
 patch:
   menu:

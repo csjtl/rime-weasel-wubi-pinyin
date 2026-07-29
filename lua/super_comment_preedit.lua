@@ -72,10 +72,10 @@ function CR.init(env)
     CR.style = env.settings.corrector_type or '{comment}'
     local auto_delimiter = env.settings.auto_delimiter
     local is_pro = wanxiang.is_pro_scheme(env)
-    
+
     -- 定义要加载的词典文件列表
     local dict_files = {}
-    
+
     -- 添加 units 词典
     table.insert(dict_files, {
         path = "dicts/dicts_cn/pinyin/units.dict.yaml",  -- units词典路径
@@ -87,7 +87,13 @@ function CR.init(env)
         path = "dicts/dicts_cn/pinyin/abbreviation.dict.yaml",
         name = "abbreviation"
     })
-    
+
+    -- 添加 diagnosis 词典
+    table.insert(dict_files, {
+        path = "dicts/dicts_cn/pinyin/diagnosis.dict.yaml",
+        name = "diagnosis"
+    })
+
     -- 添加 cuoyin 词典
     table.insert(dict_files, {
         path = is_pro and "dicts/cuoyin.pro.dict.yaml" 

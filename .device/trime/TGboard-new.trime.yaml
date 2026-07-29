@@ -148,7 +148,7 @@ style:
   #comment_on_top: true #编码提示在上方或右侧
   comment_height: 12 #编码提示区高度（仅 top 模式约束高度，其余模式与 candidate_view_height 无区别）（区显，编码显示补全区）
   comment_position: top #编码提示布局位置：right / top / overlay
-  comment_vertical_bias: 0.0 #编码提示垂直偏移位置（仅 overlay 模式使用，需要间隙空间足够，范围 0.0~1.0，0.0=top，0.5=center，1.0=bottom）
+  comment_vertical_bias: -1.0 #编码提示垂直偏移位置（仅 overlay 模式使用，需要间隙空间足够，范围 0.0~1.0，0.0=top，0.5=center，1.0=bottom）
   horizontal_gap: *h_gap #键水平间距
   #background_dim_amount: 0.5
   #root_background: keyboard_back_color # 整个键盘区+候选栏的背景图/色
@@ -1217,9 +1217,9 @@ preset_keys:
   half_period_qwerty: {label: "ic@vector_point", text: '{half_period_commit}'}
 
 preset_keyboards:
-  default:
+  focus_pinyin:
     author: "csjtl"
-    name: 预设45键
+    name: 拼音
     width: 10
     #height: 9
     #lock: true #切换程序时记忆键盘
@@ -1278,7 +1278,7 @@ preset_keyboards:
       - {click: full_period, label_symbol: ".", popup: [half_period], swipe_up: Escape, key_symbol_offset_y: *ksoy_c, symbol_text_size: *sts_c, key_text_size: *gnkey_p, key_back_color: b_gn, key_text_color: t_gn}
       - {click: Return, long_click: "", key_text_size: *gnkey_t, width: 18, round_corner: *enter_round, key_symbol_offset_y: *ksoy_c, symbol_text_size: *sts_c, key_back_color: b_enter, key_text_color: t_enter, key_symbol_color: t_enter}
 
-  qwerty:
+  default:
     author: "csjtl"
     name: qwerty
     width: 10
@@ -1536,7 +1536,7 @@ preset_keyboards:
       - {click: Key_null, height: *keyb_nullline_h, width: 100, key_back_color: *ubuntu_o, key_text_color: *ubuntu_o}
 
       - {click: Keyboard_last_lock, height: *keyb_foot_h, width: 19, key_text_size: "16", key_back_color: b_enter, key_text_color: t_enter}
-      - {click: space1, long_click: TGboard, width: 62, key_text_size: "16", key_back_color: b_gn, key_text_color: t_gn}
+      - {click: space, long_click: TGboard, swipe_left: "Left", swipe_right: "Right", swipe_up: "Up", swipe_down: "Down", width: 62, key_text_size: "16", key_back_color: b_gn, key_text_color: t_gn}
       - {click: Keyboard_punctuation_mark, long_click: 'Settings', width: 19, key_text_size: "16", key_back_color: b_gn, key_text_color: t_gn}
 
   edit_kb:
@@ -1576,7 +1576,7 @@ preset_keyboards:
       - {click: Key_null, height: *keyb_nullline_h, width: 100, key_back_color: *ubuntu_o, key_text_color: *ubuntu_o}
 
       - {click: Keyboard_last_lock, height: *keyb_foot_h, width: 19, key_text_size: "16", key_back_color: b_enter, key_text_color: t_enter}
-      - {click: space1, long_click: TGboard, width: 62, key_text_size: "16", key_back_color: b_gn, key_text_color: t_gn}
+      - {click: space, long_click: TGboard, swipe_left: "Left", swipe_right: "Right", swipe_up: "Up", swipe_down: "Down", width: 62, key_text_size: "16", key_back_color: b_gn, key_text_color: t_gn}
       - {click: Keyboard_punctuation_mark, long_click: 'Settings', width: 19, key_text_size: "16", key_back_color: b_gn, key_text_color: t_gn}
 
   markdown:
@@ -1598,7 +1598,7 @@ preset_keyboards:
       - {click: Key_null, height: *keyb_nullline_h, width: 100, key_back_color: *ubuntu_o, key_text_color: *ubuntu_o}
 
       - {click: Keyboard_default, height: *keyb_foot_h, width: 17, key_text_size: "16", key_back_color: b_enter, key_text_color: t_enter}
-      - {click: Keyboard_markdown_Common, width: 11, key_text_size: "16", key_back_color: b_enter, key_text_color: t_enter}
+      - {click: Keyboard_markdown_Common, width: 11, key_text_size: "16", key_back_color: key_back_color, key_text_color: t_enter}
       - {click: Keyboard_markdown_Title, width: 11, key_text_size: "16", key_back_color: b_gn, key_text_color: t_gn}
       - {click: Keyboard_markdown_Block, width: 11, key_text_size: "16", key_back_color: b_gn, key_text_color: t_gn}
       - {click: Keyboard_markdown_Content, width: 11, key_text_size: "16", key_back_color: b_gn, key_text_color: t_gn}
@@ -1633,7 +1633,7 @@ preset_keyboards:
 
       - {click: Keyboard_default, height: *keyb_foot_h, width: 17, key_text_size: "16", key_back_color: b_enter, key_text_color: t_enter}
       - {click: Keyboard_markdown_Common, width: 11, key_text_size: "16", key_back_color: b_gn, key_text_color: t_gn}
-      - {click: Keyboard_markdown_Title, width: 11, key_text_size: "16", key_back_color: b_enter, key_text_color: t_enter}
+      - {click: Keyboard_markdown_Title, width: 11, key_text_size: "16", key_back_color: key_back_color, key_text_color: t_enter}
       - {click: Keyboard_markdown_Block, width: 11, key_text_size: "16", key_back_color: b_gn, key_text_color: t_gn}
       - {click: Keyboard_markdown_Content, width: 11, key_text_size: "16", key_back_color: b_gn, key_text_color: t_gn}
       - {click: Keyboard_markdown_Highlight, width: 11, key_text_size: "16", key_back_color: b_gn, key_text_color: t_gn}
@@ -1668,7 +1668,7 @@ preset_keyboards:
       - {click: Keyboard_default, height: *keyb_foot_h, width: 17, key_text_size: "16", key_back_color: b_enter, key_text_color: t_enter}
       - {click: Keyboard_markdown_Common, width: 11, key_text_size: "16", key_back_color: b_gn, key_text_color: t_gn}
       - {click: Keyboard_markdown_Title, width: 11, key_text_size: "16", key_back_color: b_gn, key_text_color: t_gn}
-      - {click: Keyboard_markdown_Block, width: 11, key_text_size: "16", key_back_color: b_enter, key_text_color: t_enter}
+      - {click: Keyboard_markdown_Block, width: 11, key_text_size: "16", key_back_color: key_back_color, key_text_color: t_enter}
       - {click: Keyboard_markdown_Content, width: 11, key_text_size: "16", key_back_color: b_gn, key_text_color: t_gn}
       - {click: Keyboard_markdown_Highlight, width: 11, key_text_size: "16", key_back_color: b_gn, key_text_color: t_gn}
       - {click: Keyboard_markdown_more, width: 11, key_text_size: "16", key_back_color: b_gn, key_text_color: t_gn}
@@ -1703,7 +1703,7 @@ preset_keyboards:
       - {click: Keyboard_markdown_Common, width: 11, key_text_size: "16", key_back_color: b_gn, key_text_color: t_gn}
       - {click: Keyboard_markdown_Title, width: 11, key_text_size: "16", key_back_color: b_gn, key_text_color: t_gn}
       - {click: Keyboard_markdown_Block, width: 11, key_text_size: "16", key_back_color: b_gn, key_text_color: t_gn}
-      - {click: Keyboard_markdown_Content, width: 11, key_text_size: "16", key_back_color: b_enter, key_text_color: t_enter}
+      - {click: Keyboard_markdown_Content, width: 11, key_text_size: "16", key_back_color: key_back_color, key_text_color: t_enter}
       - {click: Keyboard_markdown_Highlight, width: 11, key_text_size: "16", key_back_color: b_gn, key_text_color: t_gn}
       - {click: Keyboard_markdown_more, width: 11, key_text_size: "16", key_back_color: b_gn, key_text_color: t_gn}
       - {click: BackSpace, swipe_right: Delete, width: 17, key_back_color: b_bs, key_text_color: t_bs}
@@ -1738,7 +1738,7 @@ preset_keyboards:
       - {click: Keyboard_markdown_Title, width: 11, key_text_size: "16", key_back_color: b_gn, key_text_color: t_gn}
       - {click: Keyboard_markdown_Block, width: 11, key_text_size: "16", key_back_color: b_gn, key_text_color: t_gn}
       - {click: Keyboard_markdown_Content, width: 11, key_text_size: "16", key_back_color: b_gn, key_text_color: t_gn}
-      - {click: Keyboard_markdown_Highlight, width: 11, key_text_size: "16", key_back_color: b_enter, key_text_color: t_enter}
+      - {click: Keyboard_markdown_Highlight, width: 11, key_text_size: "16", key_back_color: key_back_color, key_text_color: t_enter}
       - {click: Keyboard_markdown_more, width: 11, key_text_size: "16", key_back_color: b_gn, key_text_color: t_gn}
       - {click: BackSpace, swipe_right: Delete, width: 17, key_back_color: b_bs, key_text_color: t_bs}
       #- {click: Return, width: 17, key_text_size: "16", key_back_color: b_enter, key_text_color: t_enter}
@@ -1806,7 +1806,7 @@ preset_keyboards:
       - {click: Keyboard_markdown_Block, width: 11, key_text_size: "16", key_back_color: b_gn, key_text_color: t_gn}
       - {click: Keyboard_markdown_Content, width: 11, key_text_size: "16", key_back_color: b_gn, key_text_color: t_gn}
       - {click: Keyboard_markdown_Highlight, width: 11, key_text_size: "16", key_back_color: b_gn, key_text_color: t_gn}
-      - {click: Keyboard_markdown_more, width: 11, key_text_size: "16", key_back_color: b_enter, key_text_color: t_enter}
+      - {click: Keyboard_markdown_more, width: 11, key_text_size: "16", key_back_color: key_back_color, key_text_color: t_enter}
       - {click: BackSpace, swipe_right: Delete, width: 17, key_back_color: b_bs, key_text_color: t_bs}
       #- {click: Return, width: 17, key_text_size: "16", key_back_color: b_enter, key_text_color: t_enter}
 
@@ -1859,5 +1859,5 @@ preset_keyboards:
       - {click: Key_null, height: *keyb_nullline_h, width: 100, key_back_color: *ubuntu_o, key_text_color: *ubuntu_o}
 
       - {click: Keyboard_last_lock, height: *keyb_foot_h, width: 19, key_text_size: "16", key_back_color: b_enter, key_text_color: t_enter}
-      - {click: space1, long_click: TGboard, height: 70, width: 62, key_text_size: "16", key_back_color: b_gn, key_text_color: t_gn}
+      - {click: space, long_click: TGboard, swipe_left: "Left", swipe_right: "Right", swipe_up: "Up", swipe_down: "Down", height: 70, width: 62, key_text_size: "16", key_back_color: b_gn, key_text_color: t_gn}
       - {click: Keyboard_punctuation_mark, long_click: 'Settings', width: 19, key_text_size: "16", key_back_color: b_gn, key_text_color: t_gn}

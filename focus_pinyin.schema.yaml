@@ -73,11 +73,11 @@ engine:
   filters:
     - lua_filter@*rime_ice/corrector                         # 错音错字提示
     - lua_filter@*rime_ice/long_word_filter                  # 长词优先（顺序要求：长词优先 > Emoji）
+    - lua_filter@*super_comment_preedit
     - simplifier@emoji_suggestion                 # Emoji
 
     - simplifier@traditionalize                     # 简繁切换
     - uniquifier                                    # 去重
-    - lua_filter@*super_comment_preedit
 # Lua 配置: 日期、时间、星期、ISO 8601、时间戳的触发关键字
 date_translator:
   date: RQ       # 日期： 2022-11-29
@@ -109,13 +109,14 @@ translator:
   always_show_comments: true   # corrector.lua ：Rime 默认在 preedit 等于 comment 时取消显示 comment，这里强制一直显示，供 corrector.lua 做判断用。
   initial_quality: 1.2         # 拼音的权重应该比英文大
   comment_format: {comment}    # 标记拼音注释，供 corrector.lua 做判断用
+  disable_user_dict_for_patterns:  #禁止某编码录入用户词典
+    - "^[A-Z].*$"
   preedit_format:              # preedit_format 影响到输入框的显示和“Shift+回车”上屏的字符
     - xform/([jqxy])v/$1u/     # 显示为 ju qu xu yu
     # - xform/([nl])v/$1ü/     # 显示为 nü lü
     # - xform/([nl])ue/$1üe/   # 显示为 nüe lüe
     - xform/([nl])v/$1v/       # 显示为 nv lv
     - xform/([nl])ue/$1ve/     # 显示为 nve lve
-
 
 # 次翻译器，英文
 focus_en:
@@ -214,110 +215,22 @@ key_binder:
 # 拼写设定
 speller:
   # 如果不想让什么标点直接上屏，可以加在 alphabet，或者编辑标点符号为两个及以上的映射
-  alphabet: "zyxwvutsrqponmlkjihgfedcbaZYXWVUTSRQPONMLKJIHGFEDCBA1234567890"
+  alphabet: "zyxwvutsrqponmlkjihgfedcbaZYXWVUTSRQPONMLKJIHGFEDCBA"
   # initials 定义仅作为始码的按键，排除 ` 让单个的 ` 可以直接上屏
-  initials: "zyxwvutsrqponmlkjihgfedcbaZYXWVUTSRQPONMLKJIHGFEDCBA1234567890^"
+  initials: "zyxwvutsrqponmlkjihgfedcbaZYXWVUTSRQPONMLKJIHGFEDCBA"
   delimiter: " '"  # 第一位<空格>是拼音之间的分隔符；第二位<'>表示可以手动输入单引号来分割拼音。
   algebra:
     - xlit/āáǎàōóǒòēéěèīíǐìūúǔùǖǘǚǜü/aaaaooooeeeeiiiiuuuuvvvvv/
-    - xform/ń|ň|ǹ/en/
-    - xform/ńg|ňg|ǹg/en/
-
     - erase/^xx$/ # 首选保留
-    # - derive/^([zcs])h/$1/ # zh, ch, sh => z, c, s
-    # - derive/^([zcs])([^h])/$1h$2/ # z, c, s => zh, ch, sh
-    # - derive/([aei])n$/$1ng/ # en => eng, in => ing
-    # - derive/([aei])ng$/$1n/ # eng => en, ing => in
-    # - derive/([iu])an$/$lan/ # ian => iang, uan => uang
-    # - derive/([iu])ang$/$lan/ # iang => ian, uang => uan
-    - derive/([aeiou])ng$/$1gn/        # dagn => dang
-    - derive/([dtngkhrzcs])o(u|ng)$/$1o/  # zho => zhong|zhou
-    #- derive/ong$/on/                  # zhonguo => zhong guo
-    - derive/un$/ong/                  # yuntong = yongtong
-    ## 简拼
-    - derive/^([a-z]).+$/$1/         # 通过正则表达式提取每个拼音的首字母
-    #- derive/^([zcs]h).+$/$1/        # 特别处理 zh, ch, sh 的首字母简写
-    - abbrev/^([a-z]).+$/$1/         # 允许使用首字母作为缩写
 
-    - derive/^ng(\d)$/eng$1/
-    - abbrev/^ng(\d)$/ng/
-    - erase/^ng(\d)$/
-    - xform/^n(\d)/en$1/
-    - xform/^m(\d)(;.*)/me$1$2/
-    - abbrev/^([zcs]h).+$/$1/                        #zh ch sh作为整体
-    - abbrev/^([zcs]h).+(\d)$/$1$2/                  #zh ch sh作为整体
-    - derive/([nl])ve(\d)/$1ue$2/                            #让üè兼容ue
-    - derive/^([jqxy])v(\d)$/$1u$2/
-    - derive/^([jqxy])u(\d)$/$1v$2/
-    - abbrev/^([qwrtypsdfghjklzxcbnm]).+$/$1/        #不携带元音的声母派生出首字母简码来
-    - abbrev/^([qwrtypsdfghjklzxcbnm]).+(\d)$/$1$2/  #不携带元音的声母派生出首字母简码来+数字声调
-    - abbrev/^([aoe])([ioun])(\d)$/$1/               #携带两个字符的元音首字母派生出简码来
-    - abbrev/^([aoe])([ioun])(\d)$/$1$3/             #携带两个字符的元音首字母派生出简码来+数字声调
-    - derive/(.+)(\d)/$1/
-    - derive/([zcs])h(a|e|i|u|ai|ei|an|en|ou|uo|ua|un|ui|uan|uai|uang|ang|eng|ong)$/h$1$2/  # hzi → zhi
-    - derive/([zcs])h([aeiu])$/$1$2h/  # zih → zhi
-      # ai
-    - derive/^([wghk])ai$/$1ia/  # wia → wai
-      # ia
-    - derive/([qjx])ia$/$1ai/  # qai → qia
-      # ei
-    - derive/([wtfghkz])ei$/$1ie/
-      # ie
-    - derive/([jqx])ie$/$1ei/
-      # ao
-    - derive/([rtypsdghklzcbnm])ao$/$1oa/
-      # ou
-    - derive/([ypfm])ou$/$1uo/
-      # an
-    - derive/([wrtypsdfghklzcbnm])an$/$1na/
-      # ang
-    - derive/([wrtypsdfghklzcbnm])ang$/$1nag/
-    - derive/([wrtypsdfghklzcbnm])ang$/$1agn/
-      # eng
-    - derive/([wrtpsdfghklzcbnm])eng$/$1wng/
-    - derive/([wrtpsdfghklzcbnm])eng$/$1neg/
-    - derive/([wrtpsdfghklzcbnm])eng$/$1egn/
-      # ing
-    - derive/([qtypdjlxbnm])ing$/$1nig/
-    - derive/([qtypdjlxbnm])ing$/$1ign/
-      # ong
-    - derive/([rtysdghklzcn])ong$/$1nog/
-    - derive/([rtysdghklzcn])ong$/$1ogn/
-      # iao
-    - derive/([qtpdjlxbnm])iao$/$1ioa/
-    - derive/([qtpdjlxbnm])iao$/$1oia/
-      # ui
-    - derive/([rtsghkzc])ui$/$1iu/
-      # iu
-    - derive/([qjlxnm])iu$/$1ui/
-      # ian
-    - derive/([qtpdjlxbnm])ian$/$1iam/
-      # iang
-    - derive/([qjlxn])iang$/$1aing/
-    - derive/([qjlxn])iang$/$1inag/
-      # ua
-    - derive/([g|k|h|zh|sh])ua$/$1au/
-      # uai
-    - derive/([g|h|k|zh|ch|sh])uai$/$1aui/
-    - derive/([g|h|k|zh|ch|sh])uai$/$1uia/
-      # un
-    - derive/([qrtysdghjklzxc])un$/$1nu/
-      # ue
-    - derive/([nlyjqx])ue$/$1eu/
-      # uang
-    - derive/([g|h|k|zh|ch|sh])uang$/$1aung/
-    - derive/([g|h|k|zh|ch|sh])uang$/$1uagn/
-    - derive/([g|h|k|zh|ch|sh])uang$/$1unag/
-    - derive/([g|h|k|zh|ch|sh])uang$/$1augn/
-      # iong
-    - derive/([jqx])iong$/$1inog/
-    - derive/([jqx])iong$/$1oing/
-    - derive/([jqx])iong$/$1iogn/
-    - derive/([jqx])iong$/$1oign/
-      # 其他
-    - derive/ong$/on/ # lon → long
-    - derive/([tl])eng$/$1en/ # ten → teng
-    
+    - derive/^([a-z]).+$/$1/    # 生成所有单字母简码（但下面立即擦除 scz）
+    #- erase/^[scz]$/    # 擦除 s, c, z 的单字母简码
+    - erase/^[bpfdtlkhjqxrzcsyw]$/    # 擦除 bpmfdtnlgkhjqxrzcsyw 的单字母简码
+    - abbrev/^([zcs]h).+$/$1/    # 确保 zh/ch/sh 的双字母简码仍然生成
+    - abbrev/^([bpmfdtnlgkhjqxrzcsyw]).+$/$1/    # 重新生成 bpmfdtnlgkhjqxrzcsyw 单字母简码
+
+    #- abbrev/^([zcs]h).+(\d)$/$1$2/  #zh ch sh作为整体
+    #- derive/^([aeio])ng$/$1ng/  # wia → wai
 grammar:
   language: wanxiang-lts-zh-hans
   collocation_max_length: 7         #命中的最长词组

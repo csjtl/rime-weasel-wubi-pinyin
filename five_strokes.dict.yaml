@@ -22,9 +22,11 @@ encoder: #形码造词规则
     - length_in_range: [4, 10]    #四字词：每字各取其全码的第一码，共四码     #多字词：取第一、二、三及末一个汉字的第一码，共四码
       formula: "AaBaCaZa"
 import_tables:
-    - dicts/dicts_cn/five_strokes/five_strokes_unicodecjk
-    - dicts/dicts_cn/five_strokes/five_strokes_all
+    - dicts/dicts_cn/five_strokes/wubi06_unicodecjk
+    - dicts/dicts_cn/five_strokes/five_strokes_two_more
+
+    #- dicts/dicts_cn/five_strokes/five_strokes_all
     - dicts/dicts_cn/five_strokes/mayuan
 
-    - dicts/emoji/emoji_cd_five
+    #- dicts/emoji/emoji_cd_five
 ...
