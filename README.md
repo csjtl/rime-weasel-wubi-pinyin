@@ -6,11 +6,11 @@
 
 - 功能:
   1. 编辑 markdown 键盘布局
-    标题
-    区块--占据两行及以上，分割等内容的
-    内容--单行内容
-    高亮--突出重要内容
-    表格--默认，左对齐，居中，右对齐
+  - 标题
+  - 区块--占据两行及以上，分割等内容的
+  - 内容--单行内容
+  - 高亮--突出重要内容
+  - 表格--默认，左对齐，居中，右对齐
   2. 英文语法词典
   3. 表情词典
   4. 新世纪五笔键盘按键码元助记
@@ -180,7 +180,7 @@ trime.yaml
     高亮--突出重要内容
     ![markdown](https://github.com/user-attachments/assets/fb563496-6ff4-47fb-a547-72b1b2e0bd75)
     表格--默认，左对齐，居中，右对齐
-
+    ![markdown](https://github.com/user-attachments/assets/81842be7-9ad7-47c1-83bf-e4d797872699)
     全部
     ![markdown](https://github.com/user-attachments/assets/cefc4d9f-982e-45de-9906-b0ea240a98d6)
 
