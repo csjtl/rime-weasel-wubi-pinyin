@@ -793,7 +793,7 @@ preset_keys:
   EXPLORER: {label: 浏览器, send: EXPLORER}
   MUSIC: {label: 音乐, send: MUSIC}
   POWER: {label: 电源, send: POWER}
-  SEARCH: {label: 搜寻, send: Find}
+  SEARCH: {label: 搜寻, send: SEARCH}
   SLEEP: {label: 休眠, send: SLEEP}
   VOICE_ASSIST: {label: 语音, send: VOICE_ASSIST}
   VOLUME_DOWN: {label: 音量-, send: VOLUME_DOWN}
@@ -830,6 +830,7 @@ preset_keys:
   Up: {label: "ic@chevron_up", send: Up, repeatable: true}
   Right: {label: "ic@chevron_right", send: Right, repeatable: true}
   select_all: {label: 全选, send: Control+a}
+  # Clear: {label: 全清, send: CLEAR}
   Clear: {label: 清除, text: "{Control+a}{BackSpace}"} #全选并删除
   cut: {label: 剪切, send: Control+x}
   cut_all: {label: 全挪, text: "{Control+a}{Control+x}"} #全选并剪切
@@ -873,12 +874,12 @@ preset_keys:
   DeleteCandidate: {label: 删词, send: Control+Delete}
 
  # rime状态
-  Mode_switch: {toggle: ascii_mode, send: Mode_switch, states: [ 中文, 西文 ]}
-  Mode_switch1: {toggle: ascii_mode, send: Mode_switch, states: [ 中模, 英模 ]}
-  Zenkaku_Hankaku: {toggle: full_shape, send: Mode_switch, states: [ 半角, 全角 ]}
-  Henkan: {toggle: simplification, send: Mode_switch, states: [ 汉字, 汉字 ]}
-  Charset_switch: {toggle: extended_charset, send: Mode_switch, states: [ 常用, 增广 ]}
-  Punct_switch: {toggle: ascii_punct, send: Mode_switch, states: [ 。，, ．， ]}
+  Mode_switch: {toggle: ascii_mode, send: SWITCH_CHARSET, states: [ 中文, 西文 ]}
+  Mode_switch1: {toggle: ascii_mode, send: SWITCH_CHARSET, states: [ 中模, 英模 ]}
+  Zenkaku_Hankaku: {toggle: full_shape, send: SWITCH_CHARSET, states: [ 半角, 全角 ]}
+  Henkan: {toggle: simplification, send: SWITCH_CHARSET, states: [ 汉字, 汉字 ]}
+  Charset_switch: {toggle: extended_charset, send: SWITCH_CHARSET, states: [ 常用, 增广 ]}
+  Punct_switch: {toggle: ascii_punct, send: SWITCH_CHARSET, states: [ 。，, ．， ]}
 
  #切换键盘
   Keyboard_symbols: { label: "ic@symbol", send: Eisu_toggle, select: symbols }
@@ -893,20 +894,20 @@ preset_keys:
   Keyboard_letter: { label: 字母, send: Eisu_toggle, select: default }
   Keyboard_default: { label: 返回, send: Eisu_toggle, select: .default }
   Keyboard_switch: { label: 键盘, send: Eisu_toggle, select: .next }
-  liquid_keyboard_switch: { label: 符号表, send: function, command: liquid_keyboard, option: "符号表" }
-  liquid_keyboard_tabs: { label: 更多, send: function, command: liquid_keyboard, option: "更多" }
-  liquid_keyboard_emoji: { label: 🙂, send: function, command: liquid_keyboard, option: "emoji" }
-  liquid_keyboard_exit: {label: 返回, send: function, command: liquid_keyboard, option: "-1"}  #退出liquidkeyboard
+  liquid_keyboard_switch: { label: 符号表, send: FUNCTION, command: liquid_keyboard, option: "符号表" }
+  liquid_keyboard_tabs: { label: 更多, send: FUNCTION, command: liquid_keyboard, option: "更多" }
+  liquid_keyboard_emoji: { label: 🙂, send: FUNCTION, command: liquid_keyboard, option: "emoji" }
+  liquid_keyboard_exit: {label: 返回, send: FUNCTION, command: liquid_keyboard, option: "-1"}  #退出liquidkeyboard
 
-  liquid_keyboard_cn: { label: 中标, send: function, command: liquid_keyboard, option: "中标" }
-  liquid_keyboard_ascii: { label: 英标, send: function, command: liquid_keyboard, option: "英标" }
+  liquid_keyboard_cn: { label: 中标, send: FUNCTION, command: liquid_keyboard, option: "中标" }
+  liquid_keyboard_ascii: { label: 英标, send: FUNCTION, command: liquid_keyboard, option: "英标" }
   #liquid_keyboard_number: { label: 数字键, send: Eisu_toggle, select: number}
-  #liquid_keyboard_number: { label: 数字键, send: function, command: preset_keyboards, option: "数字" }
+  #liquid_keyboard_number: { label: 数字键, send: FUNCTION, command: preset_keyboards, option: "数字" }
   liquid_Keyboard_editor: {label: '编辑键', send: Eisu_toggle, select: edit_kb}
   Keyboard_app_keys: { label: APP, send: Eisu_toggle, select: app_keys }
-  Keyboard_punctuation_mark: { label: "🙂#?", send: function, command: liquid_keyboard, option: "更多" }
-  menu_keyboard: { label: 菜单, send: function, command: menu_keyboard }
-  clipboard_window: { label: "剪贴板", send: function, command: "clipboard_window", option: '0' } #0剪贴板，1收藏夹
+  Keyboard_punctuation_mark: { label: "🙂#?", send: FUNCTION, command: liquid_keyboard, option: "更多" }
+  menu_keyboard: { label: 菜单, send: FUNCTION, command: menu_keyboard }
+  clipboard_window: { label: "剪贴板", send: FUNCTION, command: "clipboard_window", option: '0' } #0剪贴板，1收藏夹
 
  # markdown 各类键盘
   Keyboard_markdown: { label: MD, send: Eisu_toggle, select: markdown }
@@ -916,6 +917,11 @@ preset_keys:
   #Keyboard_markdown_Paragraph: { label: 段落, send: Eisu_toggle, select: markdown_Paragraph }
   Keyboard_markdown_Content: { label: 内容, send: Eisu_toggle, select: markdown_Content }
   Keyboard_markdown_Highlight: { label: 高亮, send: Eisu_toggle, select: markdown_Highlight }
+  Keyboard_markdown_Excel: { label: 表格, send: Eisu_toggle, select: markdown_Excel }
+  Keyboard_markdown_Excel_null: { label: 默认, send: Eisu_toggle, select: markdown_Excel }
+  Keyboard_markdown_Excel_Left: { label: 左对齐, send: Eisu_toggle, select: markdown_Excel_Left }
+  Keyboard_markdown_Excel_Middle: { label: 居中对齐, send: Eisu_toggle, select: markdown_Excel_Middle }
+  Keyboard_markdown_Excel_Right: { label: 右对齐, send: Eisu_toggle, select: markdown_Excel_Right }
 
   #Keyboard_markdown_Layout: { label: 布局, send: Eisu_toggle, select: markdown_Layout }
   #Keyboard_markdown_text: { label: 字体, send: Eisu_toggle, select: markdown_text }
@@ -1123,37 +1129,253 @@ preset_keys:
   md_emojilist_label: {label: "⚫:简码:⚫", text: ''}
   md_emojilist: {label: 表情简码, text: '{md_emojilist_commit}{Left}'}
 
+  # 表格 1x2
+  md_1x2_commit: {commit: "|     |\n|-----|\n|     |"}
+  md_1x2_label: {label: "⚫⚫", text: ''}
+  md_1x2: {label: 1x2, text: '{md_1x2_commit}'}
+
+  # 表格 2x2
+  md_2x2_commit: {commit: "|     |     |\n|-----|-----|\n|     |     |"}
+  md_2x2_label: {label: "⚫⚫", text: ''}
+  md_2x2: {label: 2x2, text: '{md_2x2_commit}'}
+
+  # 表格 3x2
+  md_3x2_commit: {commit: "|     |     |     |\n|-----|-----|-----|\n|     |     |     |"}
+  md_3x2_label: {label: "⚫⚫", text: ''}
+  md_3x2: {label: 3x2, text: '{md_3x2_commit}'}
+
+  # 列表格 首列表头
+  md_oneleh_commit: {commit: "|     |\n|-----|"}
+  md_oneleh_label: {label: "⚫⚫", text: ''}
+  md_oneleh: {label: 首列表头, text: '{md_oneleh_commit}'}
+
+  # 列表格 追加首列
+  md_addoneleh_commit: {commit: "|     |\n"}
+  md_addoneleh_label: {label: "⚫⚫", text: ''}
+  md_addoneleh: {label: 追加首列, text: '{md_addoneleh_commit}'}
+
+  # 列表格 追加余列
+  md_addmoreleh_1: {label: 追加余列表头1, text: '     |{Down_line_End}'}
+  md_addmoreleh_2: {label: 追加余列表头2, text: '-----|{Down_line_End}'}
+  md_addmoreleh: {label: 追加余列, text: "{md_addmoreleh_1}"}
+
+  # 行表格 首行表头
+  md_oneheh_commit: {commit: "|     |"}
+  md_oneheh_label: {label: "⚫⚫", text: ''}
+  md_oneheh: {label: 首行表头, text: '{md_oneheh_commit}'}
+
+  # 行表格 追加首行
+  md_addoneheh_commit: {commit: "     |"}
+  md_addoneheh_label: {label: "⚫⚫", text: ''}
+  md_addoneheh: {label: 追加首行, text: '{md_addoneheh_commit}'}
+
+  # 行表格 二行表头
+  md_twoheh_commit: {commit: "|-----|"}
+  md_twoheh_label: {label: "⚫⚫", text: ''}
+  md_twoheh: {label: 二行表头, text: '{md_twoheh_commit}'}
+
+  # 行表格 追加二行
+  md_addtwoheh_commit: {commit: "-----|"}
+  md_addtwoheh_label: {label: "⚫⚫", text: ''}
+  md_addtwoheh: {label: 追加二行, text: '{md_addtwoheh_commit}'}
+
+  # 行表格 追加余行
+  md_addmoreheh_1: {label: 追加余行表头, text: '{md_oneheh}'}
+  md_addmoreheh_2: {label: 追加余行, text: '{md_addoneheh}'}
+
+  # 左对齐 表格 1x2
+  md_L_1x2_commit: {commit: "|     |\n|:----|\n|     |"}
+  md_L_1x2_label: {label: "⚫⚫", text: ''}
+  md_L_1x2: {label: 1x2, text: '{md_L_1x2_commit}'}
+
+  # 左对齐 表格 2x2
+  md_L_2x2_commit: {commit: "|     |     |\n|:----|:----|\n|     |     |"}
+  md_L_2x2_label: {label: "⚫⚫", text: ''}
+  md_L_2x2: {label: 2x2, text: '{md_L_2x2_commit}'}
+
+  # 左对齐 表格 3x2
+  md_L_3x2_commit: {commit: "|     |     |     |\n|:----|:----|:----|\n|     |     |     |"}
+  md_L_3x2_label: {label: "⚫⚫", text: ''}
+  md_L_3x2: {label: 3x2, text: '{md_L_3x2_commit}'}
+
+  # 左对齐 列表格 首列表头
+  md_L_oneleh_commit: {commit: "|     |\n|:----|"}
+  md_L_oneleh_label: {label: "⚫⚫", text: ''}
+  md_L_oneleh: {label: 首列表头, text: '{md_L_oneleh_commit}'}
+
+  # 左对齐 列表格 追加首列
+  md_L_addoneleh_commit: {commit: "|     |\n"}
+  md_L_addoneleh_label: {label: "⚫⚫", text: ''}
+  md_L_addoneleh: {label: 追加首列, text: '{md_L_addoneleh_commit}'}
+
+  # 左对齐 列表格 追加余列
+  md_L_addmoreleh_1: {label: 追加余列表头1, text: '     |{Down_line_End}'}
+  md_L_addmoreleh_2: {label: 追加余列表头2, text: ':----|{Down_line_End}'}
+  md_L_addmoreleh: {label: 追加余列, text: "{md_L_addmoreleh_1}"}
+
+  # 左对齐 行表格 首行表头
+  md_L_oneheh_commit: {commit: "|     |"}
+  md_L_oneheh_label: {label: "⚫⚫", text: ''}
+  md_L_oneheh: {label: 首行表头, text: '{md_L_oneheh_commit}'}
+
+  # 左对齐 行表格 追加首行
+  md_L_addoneheh_commit: {commit: "     |"}
+  md_L_addoneheh_label: {label: "⚫⚫", text: ''}
+  md_L_addoneheh: {label: 追加首行, text: '{md_L_addoneheh_commit}'}
+
+  # 左对齐 行表格 二行表头
+  md_L_twoheh_commit: {commit: "|:----|"}
+  md_L_twoheh_label: {label: "⚫⚫", text: ''}
+  md_L_twoheh: {label: 二行表头, text: '{md_L_twoheh_commit}'}
+
+  # 左对齐 行表格 追加二行
+  md_L_addtwoheh_commit: {commit: ":----|"}
+  md_L_addtwoheh_label: {label: "⚫⚫", text: ''}
+  md_L_addtwoheh: {label: 追加二行, text: '{md_L_addtwoheh_commit}'}
+
+  # 左对齐 行表格 追加余行
+  md_L_addmoreheh_1: {label: 追加余行表头, text: '{md_L_oneheh}'}
+  md_L_addmoreheh_2: {label: 追加余行, text: '{md_L_addoneheh}'}
+
+  # 居中对齐 表格 1x2
+  md_M_1x2_commit: {commit: "|     |\n|:---:|\n|     |"}
+  md_M_1x2_label: {label: "⚫⚫", text: ''}
+  md_M_1x2: {label: 1x2, text: '{md_M_1x2_commit}'}
+
+  # 居中对齐 表格 2x2
+  md_M_2x2_commit: {commit: "|     |     |\n|:---:|:---:|\n|     |     |"}
+  md_M_2x2_label: {label: "⚫⚫", text: ''}
+  md_M_2x2: {label: 2x2, text: '{md_M_2x2_commit}'}
+
+  # 居中对齐 表格 3x2
+  md_M_3x2_commit: {commit: "|     |     |     |\n|:---:|:---:|:---:|\n|     |     |     |"}
+  md_M_3x2_label: {label: "⚫⚫", text: ''}
+  md_M_3x2: {label: 3x2, text: '{md_M_3x2_commit}'}
+
+  # 居中对齐 列表格 首列表头
+  md_M_oneleh_commit: {commit: "|     |\n|:---:|"}
+  md_M_oneleh_label: {label: "⚫⚫", text: ''}
+  md_M_oneleh: {label: 首列表头, text: '{md_M_oneleh_commit}'}
+
+  # 居中对齐 列表格 追加首列
+  md_M_addoneleh_commit: {commit: "|     |\n"}
+  md_M_addoneleh_label: {label: "⚫⚫", text: ''}
+  md_M_addoneleh: {label: 追加首列, text: '{md_M_addoneleh_commit}'}
+
+  # 居中对齐 列表格 追加余列
+  md_M_addmoreleh_1: {label: 追加余列表头1, text: '     |{Down_line_End}'}
+  md_M_addmoreleh_2: {label: 追加余列表头2, text: ':---:|{Down_line_End}'}
+  md_M_addmoreleh: {label: 追加余列, text: "{md_M_addmoreleh_1}"}
+
+  # 居中对齐 行表格 首行表头
+  md_M_oneheh_commit: {commit: "|     |"}
+  md_M_oneheh_label: {label: "⚫⚫", text: ''}
+  md_M_oneheh: {label: 首行表头, text: '{md_M_oneheh_commit}'}
+
+  # 居中对齐 行表格 追加首行
+  md_M_addoneheh_commit: {commit: "     |"}
+  md_M_addoneheh_label: {label: "⚫⚫", text: ''}
+  md_M_addoneheh: {label: 追加首行, text: '{md_M_addoneheh_commit}'}
+
+  # 居中对齐 行表格 二行表头
+  md_M_twoheh_commit: {commit: "|:---:|"}
+  md_M_twoheh_label: {label: "⚫⚫", text: ''}
+  md_M_twoheh: {label: 二行表头, text: '{md_M_twoheh_commit}'}
+
+  # 居中对齐 行表格 追加二行
+  md_M_addtwoheh_commit: {commit: ":---:|"}
+  md_M_addtwoheh_label: {label: "⚫⚫", text: ''}
+  md_M_addtwoheh: {label: 追加二行, text: '{md_M_addtwoheh_commit}'}
+
+  # 居中对齐 行表格 追加余行
+  md_M_addmoreheh_1: {label: 追加余行表头, text: '{md_M_oneheh}'}
+  md_M_addmoreheh_2: {label: 追加余行, text: '{md_M_addoneheh}'}
+
+  # 右对齐 表格 1x2
+  md_R_1x2_commit: {commit: "|     |\n|----:|\n|     |"}
+  md_R_1x2_label: {label: "⚫⚫", text: ''}
+  md_R_1x2: {label: 1x2, text: '{md_R_1x2_commit}'}
+
+  # 右对齐 表格 2x2
+  md_R_2x2_commit: {commit: "|     |     |\n|----:|----:|\n|     |     |"}
+  md_R_2x2_label: {label: "⚫⚫", text: ''}
+  md_R_2x2: {label: 2x2, text: '{md_R_2x2_commit}'}
+
+  # 右对齐 表格 3x2
+  md_R_3x2_commit: {commit: "|     |     |     |\n|----:|----:|----:|\n|     |     |     |"}
+  md_R_3x2_label: {label: "⚫⚫", text: ''}
+  md_R_3x2: {label: 3x2, text: '{md_R_3x2_commit}'}
+
+  # 右对齐 列表格 首列表头
+  md_R_oneleh_commit: {commit: "|     |\n|----:|"}
+  md_R_oneleh_label: {label: "⚫⚫", text: ''}
+  md_R_oneleh: {label: 首列表头, text: '{md_R_oneleh_commit}'}
+
+  # 右对齐 列表格 追加首列
+  md_R_addoneleh_commit: {commit: "|     |\n"}
+  md_R_addoneleh_label: {label: "⚫⚫", text: ''}
+  md_R_addoneleh: {label: 追加首列, text: '{md_R_addoneleh_commit}'}
+
+  # 右对齐 列表格 追加余列
+  md_R_addmoreleh_1: {label: 追加余列表头1, text: '     |{Down_line_End}'}
+  md_R_addmoreleh_2: {label: 追加余列表头2, text: '----:|{Down_line_End}'}
+  md_R_addmoreleh: {label: 追加余列, text: "{md_R_addmoreleh_1}"}
+
+  # 右对齐 行表格 首行表头
+  md_R_oneheh_commit: {commit: "|     |"}
+  md_R_oneheh_label: {label: "⚫⚫", text: ''}
+  md_R_oneheh: {label: 首行表头, text: '{md_R_oneheh_commit}'}
+
+  # 右对齐 行表格 追加首行
+  md_R_addoneheh_commit: {commit: "     |"}
+  md_R_addoneheh_label: {label: "⚫⚫", text: ''}
+  md_R_addoneheh: {label: 追加首行, text: '{md_R_addoneheh_commit}'}
+
+  # 右对齐 行表格 二行表头
+  md_R_twoheh_commit: {commit: "|----:|"}
+  md_R_twoheh_label: {label: "⚫⚫", text: ''}
+  md_R_twoheh: {label: 二行表头, text: '{md_R_twoheh_commit}'}
+
+  # 右对齐 行表格 追加二行
+  md_R_addtwoheh_commit: {commit: "----:|"}
+  md_R_addtwoheh_label: {label: "⚫⚫", text: ''}
+  md_R_addtwoheh: {label: 追加二行, text: '{md_R_addtwoheh_commit}'}
+
+  # 右对齐 行表格 追加余行
+  md_R_addmoreheh_1: {label: 追加余行表头, text: '{md_R_oneheh}'}
+  md_R_addmoreheh_2: {label: 追加余行, text: '{md_R_addoneheh}'}
+
  # trime设置
   IME_switch: {label: 🌐, send: LANGUAGE_SWITCH} #弹出对话框选择输入法
   IME_last: {label: 上一输入法, send: LANGUAGE_SWITCH, select: .last} #直接切换到上一输入法
   IME_next: {label: 下一输入法, send: LANGUAGE_SWITCH, select: .next} #直接切换到下一输入法
   Schema_switch: {label: 方案选单, send: Control+Shift+grave}
   Schema_Eng: {label: En, send: Control+Shift+0}
-  #one_hand_switch_1: {toggle: _one_hand_mode_1, send: Mode_switch, states: [ 左手, 普通 ]}
-  #one_hand_switch_2: {toggle: _one_hand_mode_2, send: Mode_switch, states: [ 右手, 普通 ]}
-  #one_hand_switch_3: {toggle: _one_hand_mode_3, send: Mode_switch, states: [ 左手, 右手 ]}
+  #one_hand_switch_1: {toggle: _one_hand_mode_1, send: SWITCH_CHARSET, states: [ 左手, 普通 ]}
+  #one_hand_switch_2: {toggle: _one_hand_mode_2, send: SWITCH_CHARSET, states: [ 右手, 普通 ]}
+  #one_hand_switch_3: {toggle: _one_hand_mode_3, send: SWITCH_CHARSET, states: [ 左手, 右手 ]}
   Theme_settings: {label: 主题, send: SETTINGS, option: "theme"}
   Color_switch: {label: 配色, send: PROG_RED}
-  Help: {label: 说明, send: Help}
+  Help: {label: 说明, send: HELP}
   Info: {label: 关于, send: INFO}
-  Menu: {label: 方案, send: Menu}
+  Menu: {label: 方案, send: MENU}
   Settings: {label: 设置, send: SETTINGS}
   TGboard: {label: TGboard, text: ''}
   #Color_settings: {label: 配色, send: SETTINGS, option: "color"}
   #Schema_settings: {label: 方案, send: SETTINGS, option: "schema"}
-  #Candidate_switch: {toggle: _hide_candidate, send: Mode_switch, states: [ 有候选, 无候选]}
-  #Comment_switch: {toggle: _hide_comment, send: Mode_switch, states: [ 有注释, 无注释]}
-  #Hint_switch: {toggle: _hide_key_hint, send: Mode_switch, states: [ 有助记, 无助记]}
+  #Candidate_switch: {toggle: _hide_candidate, send: SWITCH_CHARSET, states: [ 有候选, 无候选]}
+  #Comment_switch: {toggle: _hide_comment, send: SWITCH_CHARSET, states: [ 有注释, 无注释]}
+  #Hint_switch: {toggle: _hide_key_hint, send: SWITCH_CHARSET, states: [ 有助记, 无助记]}
 
  # trime命令
-  Date: {label: 日期, send: function, command: date, option: " yyyy-MM-dd "}
+  Date: {label: 日期, send: FUNCTION, command: date, option: " yyyy-MM-dd "}
   ChineseDate: {label: 农历, command: date, option: "zh_CN@calendar=chinese"} #农历等日期(>=Android 7.0)：date 语言@calendar=历法 格式。具体参见https://developer.android.com/reference/android/icu/util/Calendar.html
-  Time: {label: 時間, send: function, command: date, option: "HH:mm:ss"} #時間： date 格式
+  Time: {label: 時間, send: FUNCTION, command: date, option: "HH:mm:ss"} #時間： date 格式
   DateTime: {label: 日+时, command: date, option: "yyyy-MM-dd-HHmmss"}
-  TrimeApp: {label: 同文APP, send: function, command: run, option: "com.osfans.trime"} #运行程序: run 包名
-  TrimeWiki: {label: 同文WiKi, send: function, command: run, option: "https://github.com/osfans/trime/wiki/trime.yaml-詳解"} #运行程序指定组件: run 包名/组件名
-  TrimeCmp: {label: 同文組件, send: function, command: run, option: "com.osfans.trime/.ui.main.MainActivity"} #運行程序指定組件: run 包名/組件名
-  Homepage: {label: 同文主页, send: function, command: run, option: "https://github.com/osfans/trime"} #查看网页: run 网址
+  TrimeApp: {label: 同文APP, send: FUNCTION, command: run, option: "com.osfans.trime"} #运行程序: run 包名
+  TrimeWiki: {label: 同文WiKi, send: FUNCTION, command: run, option: "https://github.com/osfans/trime/wiki/trime.yaml-詳解"} #运行程序指定组件: run 包名/组件名
+  TrimeCmp: {label: 同文組件, send: FUNCTION, command: run, option: "com.osfans.trime/.ui.main.MainActivity"} #運行程序指定組件: run 包名/組件名
+  Homepage: {label: 同文主页, send: FUNCTION, command: run, option: "https://github.com/osfans/trime"} #查看网页: run 网址
   CommitHomepage: {label: 同文网址, commit: https://github.com/osfans/trime} #直接上屏
 
  #%s         爲当前字符
@@ -1165,23 +1387,23 @@ preset_keys:
  #- 命令直通車：漢字爲%s或%1$s，編碼爲%2$s
  #- 剛上屏字%1，光標前字%3
  #- 光標前所有字%4$s
-  Wiki: {label: 上屏-维基, send: function, command: run, option: "https://zh.wikipedia.org/wiki/%s"} #搜索网页: %s或者%1$s爲当前字符
-  Wiki2: {label: 2-维基, send: function, command: run, option: "https://zh.wikipedia.org/wiki/%2$s"}
-  Wiki3: {label: 光标-维基, send: function, command: run, option: "https://zh.wikipedia.org/wiki/%3$s"}
-  Wiki4: {label: 4-维基, send: function, command: run, option: "https://zh.wikipedia.org/wiki/%4$s"}
-  Google: {label: 上屏-谷歌, send: function, command: run, option: "https://www.google.com/search?q=%1$s"}
-  Google2: {label: 2-谷歌, send: function, command: run, option: "https://www.google.com/search?q=%2$s"}
-  Google3: {label: 光标-谷歌, send: function, command: run, option: "https://www.google.com/search?q=%3$s"} #搜索网页: %s或者%1$s爲当前字符
-  Google4: {label: 3-谷歌, send: function, command: run, option: "https://www.google.com/search?q=%4$s"}
-  MoeDict: {label: 光标-萌典, send: function, command: run, option: "https://www.moedict.tw/%3$s"} #搜索网页: %3$s爲光标前字符
-  Baidu3: {label: 光标-百度, send: function, command: run, option: "https://www.baidu.com/s?wd=%3$s"} #搜索网页: %4s爲光标前所有字符
-  Zdic: {label: 汉典, send: function, command: run, option: "http://www.zdic.net/sousuo/?q=%1$s"} #搜索网页: %s或者%1$s爲当前字符
-  Zdic2: {label: 汉典, send: function, command: run, option: "http://www.zdic.net/sousuo/?q=%2$s"} #搜索网页: %2$s爲当前输入的编码
+  Wiki: {label: 上屏-维基, send: FUNCTION, command: run, option: "https://zh.wikipedia.org/wiki/%s"} #搜索网页: %s或者%1$s爲当前字符
+  Wiki2: {label: 2-维基, send: FUNCTION, command: run, option: "https://zh.wikipedia.org/wiki/%2$s"}
+  Wiki3: {label: 光标-维基, send: FUNCTION, command: run, option: "https://zh.wikipedia.org/wiki/%3$s"}
+  Wiki4: {label: 4-维基, send: FUNCTION, command: run, option: "https://zh.wikipedia.org/wiki/%4$s"}
+  Google: {label: 上屏-谷歌, send: FUNCTION, command: run, option: "https://www.google.com/search?q=%1$s"}
+  Google2: {label: 2-谷歌, send: FUNCTION, command: run, option: "https://www.google.com/search?q=%2$s"}
+  Google3: {label: 光标-谷歌, send: FUNCTION, command: run, option: "https://www.google.com/search?q=%3$s"} #搜索网页: %s或者%1$s爲当前字符
+  Google4: {label: 3-谷歌, send: FUNCTION, command: run, option: "https://www.google.com/search?q=%4$s"}
+  MoeDict: {label: 光标-萌典, send: FUNCTION, command: run, option: "https://www.moedict.tw/%3$s"} #搜索网页: %3$s爲光标前字符
+  Baidu3: {label: 光标-百度, send: FUNCTION, command: run, option: "https://www.baidu.com/s?wd=%3$s"} #搜索网页: %4s爲光标前所有字符
+  Zdic: {label: 汉典, send: FUNCTION, command: run, option: "http://www.zdic.net/sousuo/?q=%1$s"} #搜索网页: %s或者%1$s爲当前字符
+  Zdic2: {label: 汉典, send: FUNCTION, command: run, option: "http://www.zdic.net/sousuo/?q=%2$s"} #搜索网页: %2$s爲当前输入的编码
   WebSearch: {label: 搜索網頁, command: web_search, option: "%3$s"} #搜索，其他view、dial、edit、search等intent，參考安卓的intent文檔：https://developer.android.com/reference/android/content/Intent.html
   #WebSearch: {label: 搜索網頁, command: WEB_SEARCH, option: "%1$s"}
   #Search: { label: "系统搜索", command: "intent", intent: "android.intent.action.WEB_SEARCH", data: "?q=%s" }
   SearchWeb: {label: 网页搜索, text: "{copy}{EdgeApp}", option: "%1$s"}
-  Search: {label: 搜索, send: function, command: search, option: "%1$s"} #搜索短信、字典等
+  Search: {label: 搜索, send: FUNCTION, command: search, option: "%1$s"} #搜索短信、字典等
 
   Share: {label: 分享, command: send, option: "%s"} #分享指定文本: %s或者%1$s爲当前字符
   Deploy: {label: 部署, command: broadcast, option: "com.osfans.trime.action.DeployActivity"}
@@ -1264,15 +1486,15 @@ preset_keyboards:
       - {click: Shift_L, label_symbol: " ", long_click: Shift_L, double_click: Shift_L_double_lock, width: 12, key_text_size: *gnkey_t, hilited_key_back_color: b_enter, key_back_color: b_bs, key_text_color: t_bs}
       - {click: z, long_click: "", key_symbol_offset_x: *ksox_e, key_back_color: b_h3, key_text_color: t_h3, key_text_size: *main_kts}
       - {click: x, long_click: cut, key_symbol_offset_y: *ksoy_c, symbol_text_size: *sts_c, key_back_color: b_h3, key_text_color: t_h3, key_text_size: *main_kts}
-      - {click: c, long_click: copy, swipe_down: ' ', key_symbol_offset_y: *ksoy_c, symbol_text_size: *sts_c, key_back_color: b_h3, key_text_color: t_h3, key_text_size: *main_kts}
+      - {click: c, long_click: copy, swipe_down: "Down", key_symbol_offset_y: *ksoy_c, symbol_text_size: *sts_c, key_back_color: b_h3, key_text_color: t_h3, key_text_size: *main_kts}
       - {click: v, long_click: paste, key_symbol_offset_y: *ksoy_c, symbol_text_size: *sts_c, key_back_color: b_h3, key_text_color: t_h3, key_text_size: *main_kts}
       - {click: b, long_click: "", key_symbol_offset_x: *ksox_e, key_back_color: b_h3, key_text_color: t_h3, key_text_size: *main_kts}
-      - {click: n, long_click: "", key_symbol_offset_x: *ksox_e, key_back_color: b_h3, key_text_color: t_h3, key_text_size: *main_kts}
-      - {click: m, long_click: "", key_symbol_offset_x: *ksox_e, key_back_color: b_h3, key_text_color: t_h3, key_text_size: *main_kts}
+      - {click: n, label_symbol: "APP", popup: [Keyboard_app_keys], swipe_up: Escape, key_symbol_offset_y: *ksoy_c, key_back_color: b_h3, key_text_color: t_h3, key_text_size: *main_kts}
+      - {click: m, label_symbol: "MD", popup: [Keyboard_markdown], swipe_up: Escape, key_symbol_offset_y: *ksoy_c, key_back_color: b_h3, key_text_color: t_h3, key_text_size: *main_kts}
       - {click: BackSpace, swipe_right: Delete, key_text_size: *gnkey_t, width: 18, key_back_color: b_bs, key_text_color: t_bs}
 
       - {click: Keyboard_symbols, label_symbol: "主\/方\/配", popup: [Theme_settings, Menu, Color_switch], swipe_up: Escape, width: 15, height: *keyb_end_h, round_corner: *enter_round, key_symbol_offset_y: *ksoy_c, symbol_text_size: *sts_c, key_text_size: *gnkey_t, key_back_color: b_gn, key_text_color: t_gn}
-      - {click: Keyboard_number, label_symbol: "编\/A\/M", popup: [Keyboard_editor, Keyboard_app_keys, Keyboard_markdown], swipe_up: Escape, composing: delimiter, key_symbol_offset_y: *ksoy_c, symbol_text_size: *sts_c, key_text_size: *gnkey_t, key_back_color: b_gn, key_text_color: t_gn}
+      - {click: Keyboard_number, label_symbol: "编辑", popup: [Keyboard_editor], swipe_up: Escape, composing: delimiter, key_symbol_offset_y: *ksoy_c, symbol_text_size: *sts_c, key_text_size: *gnkey_t, key_back_color: b_gn, key_text_color: t_gn}
       - {click: full_comma, label_symbol: ",", popup: [half_comma], swipe_up: Escape, key_symbol_offset_y: *ksoy_c, symbol_text_size: *sts_c, key_text_size: *gnkey_c, key_back_color: b_gn, key_text_color: t_gn}
       - {click: space, long_click: TGboard, swipe_left: "Left", swipe_right: "Right", swipe_up: "Up", swipe_down: "Down", width: 37, key_back_color: b_kg, key_text_color: t_kg}
       - {click: full_period, label_symbol: ".", popup: [half_period], swipe_up: Escape, key_symbol_offset_y: *ksoy_c, symbol_text_size: *sts_c, key_text_size: *gnkey_p, key_back_color: b_gn, key_text_color: t_gn}
@@ -1288,16 +1510,16 @@ preset_keyboards:
     #label_transform: none #uppercase|none
     reset_ascii_mode: true  #显示键盘时重置为ascii_mode指定的状态
     keys:
-      - {click: KP_1, label_symbol: "", popup: [1], swipe_up: Escape,,  key_back_color: b_h0, key_text_color: t_h0, key_text_size: *main_kts}
-      - {click: KP_2, label_symbol: "", popup: [2], swipe_up: Escape,,  key_back_color: b_h0, key_text_color: t_h0, key_text_size: *main_kts}
-      - {click: KP_3, label_symbol: "", popup: [3], swipe_up: Escape,,  key_back_color: b_h0, key_text_color: t_h0, key_text_size: *main_kts}
-      - {click: KP_4, label_symbol: "", popup: [4], swipe_up: Escape,,  key_back_color: b_h0, key_text_color: t_h0, key_text_size: *main_kts}
-      - {click: KP_5, label_symbol: "", popup: [5], swipe_up: Escape,,  key_back_color: b_h0, key_text_color: t_h0, key_text_size: *main_kts}
-      - {click: KP_6, label_symbol: "", popup: [6], swipe_up: Escape,,  key_back_color: b_h0, key_text_color: t_h0, key_text_size: *main_kts}
-      - {click: KP_7, label_symbol: "", popup: [7], swipe_up: Escape,,  key_back_color: b_h0, key_text_color: t_h0, key_text_size: *main_kts}
-      - {click: KP_8, label_symbol: "", popup: [8], swipe_up: Escape,,  key_back_color: b_h0, key_text_color: t_h0, key_text_size: *main_kts}
-      - {click: KP_9, label_symbol: "", popup: [9], swipe_up: Escape,,  key_back_color: b_h0, key_text_color: t_h0, key_text_size: *main_kts}
-      - {click: KP_0, label_symbol: "", popup: [0], swipe_up: Escape,,  key_back_color: b_h0, key_text_color: t_h0, key_text_size: *main_kts}
+      - {click: KP_1, label_symbol: "", popup: [1], swipe_up: Escape, key_back_color: b_h0, key_text_color: t_h0, key_text_size: *main_kts}
+      - {click: KP_2, label_symbol: "", popup: [2], swipe_up: Escape, key_back_color: b_h0, key_text_color: t_h0, key_text_size: *main_kts}
+      - {click: KP_3, label_symbol: "", popup: [3], swipe_up: Escape, key_back_color: b_h0, key_text_color: t_h0, key_text_size: *main_kts}
+      - {click: KP_4, label_symbol: "", popup: [4], swipe_up: Escape, key_back_color: b_h0, key_text_color: t_h0, key_text_size: *main_kts}
+      - {click: KP_5, label_symbol: "", popup: [5], swipe_up: Escape, key_back_color: b_h0, key_text_color: t_h0, key_text_size: *main_kts}
+      - {click: KP_6, label_symbol: "", popup: [6], swipe_up: Escape, key_back_color: b_h0, key_text_color: t_h0, key_text_size: *main_kts}
+      - {click: KP_7, label_symbol: "", popup: [7], swipe_up: Escape, key_back_color: b_h0, key_text_color: t_h0, key_text_size: *main_kts}
+      - {click: KP_8, label_symbol: "", popup: [8], swipe_up: Escape, key_back_color: b_h0, key_text_color: t_h0, key_text_size: *main_kts}
+      - {click: KP_9, label_symbol: "", popup: [9], swipe_up: Escape, key_back_color: b_h0, key_text_color: t_h0, key_text_size: *main_kts}
+      - {click: KP_0, label_symbol: "", popup: [0], swipe_up: Escape, key_back_color: b_h0, key_text_color: t_h0, key_text_size: *main_kts}
 
       - {click: q, label_symbol: "E-T\/T", popup: [Excel_Tab, Tab], swipe_up: Escape, key_symbol_offset_y: *ksoy_c, symbol_text_size: *sts_c, key_back_color: b_h1, key_text_color: t_h1, key_text_size: *main_kts}
       - {click: w, long_click: "", key_symbol_offset_y: *ksoy_c, symbol_text_size: *sts_c, key_back_color: b_h1, key_text_color: t_h1, key_text_size: *main_kts}
@@ -1325,15 +1547,15 @@ preset_keyboards:
       - {click: Shift_L, label_symbol: " ", long_click: Shift_L, double_click: Shift_L_double_lock, width: 12, key_text_size: *gnkey_t, hilited_key_back_color: b_enter, key_back_color: b_bs, key_text_color: t_bs}
       - {click: z, long_click: "", key_symbol_offset_x: *ksox_e, key_back_color: b_h3, key_text_color: t_h3, key_text_size: *main_kts}
       - {click: x, long_click: cut, key_symbol_offset_y: *ksoy_c, symbol_text_size: *sts_c, key_back_color: b_h3, key_text_color: t_h3, key_text_size: *main_kts}
-      - {click: c, long_click: copy, swipe_down: ' ', key_symbol_offset_y: *ksoy_c, symbol_text_size: *sts_c, key_back_color: b_h3, key_text_color: t_h3, key_text_size: *main_kts}
+      - {click: c, long_click: copy, swipe_down: "Down", key_symbol_offset_y: *ksoy_c, symbol_text_size: *sts_c, key_back_color: b_h3, key_text_color: t_h3, key_text_size: *main_kts}
       - {click: v, long_click: paste, key_symbol_offset_y: *ksoy_c, symbol_text_size: *sts_c, key_back_color: b_h3, key_text_color: t_h3, key_text_size: *main_kts}
       - {click: b, long_click: "", key_symbol_offset_x: *ksox_e, key_back_color: b_h3, key_text_color: t_h3, key_text_size: *main_kts}
-      - {click: n, long_click: "", key_symbol_offset_x: *ksox_e, key_back_color: b_h3, key_text_color: t_h3, key_text_size: *main_kts}
-      - {click: m, long_click: "", key_symbol_offset_x: *ksox_e, key_back_color: b_h3, key_text_color: t_h3, key_text_size: *main_kts}
+      - {click: n, label_symbol: "APP", popup: [Keyboard_app_keys], swipe_up: Escape, key_symbol_offset_y: *ksoy_c, key_back_color: b_h3, key_text_color: t_h3, key_text_size: *main_kts}
+      - {click: m, label_symbol: "MD", popup: [Keyboard_markdown], swipe_up: Escape, key_symbol_offset_y: *ksoy_c, key_back_color: b_h3, key_text_color: t_h3, key_text_size: *main_kts}
       - {click: BackSpace, swipe_right: Delete, key_text_size: *gnkey_t, width: 18, key_back_color: b_bs, key_text_color: t_bs}
 
       - {click: Keyboard_symbols, label_symbol: "主\/方\/配", popup: [Theme_settings, Menu, Color_switch], swipe_up: Escape, width: 15, height: *keyb_end_h, round_corner: *enter_round, key_symbol_offset_y: *ksoy_c, symbol_text_size: *sts_c, key_text_size: *gnkey_t, key_back_color: b_gn, key_text_color: t_gn}
-      - {click: Keyboard_number, label_symbol: "编\/A\/M", popup: [Keyboard_editor, Keyboard_app_keys, Keyboard_markdown], swipe_up: Escape, composing: delimiter, key_symbol_offset_y: *ksoy_c, symbol_text_size: *sts_c, key_text_size: *gnkey_t, key_back_color: b_gn, key_text_color: t_gn}
+      - {click: Keyboard_number, label_symbol: "编辑", popup: [Keyboard_editor], swipe_up: Escape, composing: delimiter, key_symbol_offset_y: *ksoy_c, symbol_text_size: *sts_c, key_text_size: *gnkey_t, key_back_color: b_gn, key_text_color: t_gn}
       - {click: half_comma_qwerty, key_symbol_offset_y: *ksoy_c, symbol_text_size: *sts_c, key_text_size: *gnkey_c, key_back_color: b_gn, key_text_color: t_gn}
       - {click: space, long_click: TGboard, swipe_left: "Left", swipe_right: "Right", swipe_up: "Up", swipe_down: "Down", width: 37, key_back_color: b_kg, key_text_color: t_kg}
       - {click: half_period_qwerty, key_symbol_offset_y: *ksoy_c, symbol_text_size: *sts_c, key_text_size: *gnkey_p, key_back_color: b_gn, key_text_color: t_gn}
@@ -1373,7 +1595,7 @@ preset_keyboards:
 
       - {width: 5}
       - {click: '~', long_click: '～', key_symbol_offset_x: *ksox_e, key_back_color: b_h2, key_text_color: t_h2, key_text_size: *sym_kts}
-      - {click: '/', long_click: '／', swipe_down: ' ', key_symbol_offset_x: *ksox_e, key_back_color: b_h2, key_text_color: t_h2, key_text_size: *sym_kts}
+      - {click: '/', long_click: '／', swipe_down: "Down", key_symbol_offset_x: *ksox_e, key_back_color: b_h2, key_text_color: t_h2, key_text_size: *sym_kts}
       - {click: ';', long_click: '；', key_symbol_offset_x: *ksox_e, key_back_color: b_h2, key_text_color: t_h2, key_text_size: *sym_kts}
       - {click: "'", long_click: "", key_symbol_offset_x: *ksox_e, key_back_color: key_fj_back_color, key_text_color: t_h2, key_text_size: *sym_kts}
       - {click: '[', long_click: '【', key_symbol_offset_x: *ksox_e, key_back_color: b_h2, key_text_color: t_h2, key_text_size: *sym_kts}
@@ -1394,7 +1616,7 @@ preset_keyboards:
       - {click: BackSpace, swipe_right: Delete, key_text_size: *gnkey_t, width: 18, key_back_color: b_bs, key_text_color: t_bs}
 
       - {click: Keyboard_last_lock, label_symbol: "主\/方\/配", popup: [Theme_settings, Menu, Color_switch], width: 15, height: *keyb_end_h, round_corner: *enter_round, key_symbol_offset_y: *ksoy_c, symbol_text_size: *sts_c, key_back_color: b_gn, key_text_color: t_gn}
-      - {click: Keyboard_number, label_symbol: "编\/A\/M", popup: [Keyboard_editor, Keyboard_app_keys, Keyboard_markdown], swipe_up: Escape, composing: delimiter, key_symbol_offset_y: *ksoy_c, symbol_text_size: *sts_c, key_text_size: *gnkey_t, key_back_color: b_gn, key_text_color: t_gn}
+      - {click: Keyboard_number, label_symbol: "编辑", popup: [Keyboard_editor], swipe_up: Escape, composing: delimiter, key_symbol_offset_y: *ksoy_c, symbol_text_size: *sts_c, key_text_size: *gnkey_t, key_back_color: b_gn, key_text_color: t_gn}
       - {click: full_comma, label_symbol: ",", popup: [half_comma], swipe_up: Escape, key_symbol_offset_y: *ksoy_c, symbol_text_size: *sts_c, key_text_size: *gnkey_c, key_back_color: b_gn, key_text_color: t_gn}
       - {click: space, long_click: TGboard, swipe_left: "Left", swipe_right: "Right", swipe_up: "Up", swipe_down: "Down", width: 37, key_back_color: b_kg, key_text_color: t_kg}
       - {click: full_period, label_symbol: ".", popup: [half_period], swipe_up: Escape, key_symbol_offset_y: *ksoy_c, symbol_text_size: *sts_c, key_text_size: *gnkey_p, key_back_color: b_gn, key_text_color: t_gn}
@@ -1424,43 +1646,43 @@ preset_keyboards:
 
       - {label: 我 Q, click: q, label_symbol: "", popup: [Excel_Tab, Tab], swipe_up: Escape, key_back_color: b_h1, key_text_color: *ktc_wb, hint: "       􀂀\n􀂁􀂂􀂃􀂄􀂅\n􀂆􀂇􀂈 􀂉\n􀂊􀂋􀂌􀂍", key_text_offset_x: *ktox_wb, key_text_offset_y: *ktoy_wb, key_hint_offset_x: *khox_wb, key_hint_offset_y: *khoy_wb, key_symbol_color: *ksc_wb}
       - {label: 人 W, click: w, label_symbol: "", popup: [], swipe_up: Escape, key_back_color: b_h1, key_text_color: *ktc_wb, hint: "       􀁸\n􀁹    􀁺\n􀁻    􀁼\n􀁽􀁾 􀁿", key_text_offset_x: *ktox_wb, key_text_offset_y: *ktoy_wb, key_hint_offset_x: *khox_wb, key_hint_offset_y: *khoy_wb, key_symbol_color: *ksc_wb}
-      - {label: 有 E, click: e, label_symbol: "", popup: [Escape], swipe_up: Escape,, key_back_color: b_h1, key_text_color: *ktc_wb, hint: "       􀁬\n􀁪 􀁫􀁮 􀁮􀁯\n􀁰􀁱􀁲􀁳\n􀁴 􀁵􀁶 􀁷", key_text_offset_x: *ktox_wb, key_text_offset_y: *ktoy_wb, key_hint_offset_x: *khox_wb, key_hint_offset_y: *khoy_wb, key_symbol_color: *ksc_wb}
-      - {label: 的 R, click: r, label_symbol: "", popup: [], swipe_up: Escape,,  key_back_color: b_h1, key_text_color: *ktc_wb, hint: "       􀁣\n􀁠 􀁡 􀁢\n􀁤 􀁥 􀁦\n􀁧 􀁨 􀁩", key_text_offset_x: *ktox_wb, key_text_offset_y: *ktoy_wb, key_hint_offset_x: *khox_wb, key_hint_offset_y: *khoy_wb, key_symbol_color: *ksc_wb}
-      - {label: 和 T, click: t, label_symbol: "", popup: [], swipe_up: Escape,,  key_back_color: b_h1, key_text_color: *ubuntu_o, hint: "       􀁚\n􀁘  􀁙  􀁛\n􀁜    􀁝\n􀁞    􀁟", key_text_offset_x: *ktox_wb, key_text_offset_y: *ktoy_wb, key_hint_offset_x: *khox_wb, key_hint_offset_y: *khoy_wb, key_symbol_color: *ksc_wb}
-      - {label: 主 Y, click: y, label_symbol: "", popup: [], swipe_up: Escape,,  key_back_color: b_h1, key_text_color: *ubuntu_o, hint: "       􀂐\n􀂎  􀂏  􀂑\n􀂒    􀂓\n􀂔    􀂕", key_text_offset_x: *ktox_wb, key_text_offset_y: *ktoy_wb, key_hint_offset_x: *khox_wb, key_hint_offset_y: *khoy_wb, key_symbol_color: *ksc_wb}
-      - {label: 产 U, click: u, label_symbol: "", popup: [], swipe_up: Escape,,  key_back_color: b_h1, key_text_color: *ktc_wb, hint: "       􀂙\n􀂖 􀂗 􀂘 􀂚\n􀂛 􀂜  􀂝\n􀂞 􀂟 􀂠", key_text_offset_x: *ktox_wb, key_text_offset_y: *ktoy_wb, key_hint_offset_x: *khox_wb, key_hint_offset_y: *khoy_wb, key_symbol_color: *ksc_wb}
-      - {label: 不 I, click: i, label_symbol: "", popup: [], swipe_up: Escape,,  key_back_color: b_h1, key_text_color: *ktc_wb, hint: "       􀂣\n􀂡  􀂢  􀂤\n􀂥 􀂦 􀂧 􀂨\n􀂩 􀂪 􀂫􀂬", key_text_offset_x: *ktox_wb, key_text_offset_y: *ktoy_wb, key_hint_offset_x: *khox_wb, key_hint_offset_y: *khoy_wb, key_symbol_color: *ksc_wb}
-      - {label: 为 O, click: o, label_symbol: "", popup: [], swipe_up: Escape,,  key_back_color: b_h1, key_text_color: *ktc_wb, hint: "       􀂮\n􀂭 􀂯 􀂰\n􀂱 􀂲 􀂳\n􀂴    􀂵", key_text_offset_x: *ktox_wb, key_text_offset_y: *ktoy_wb, key_hint_offset_x: *khox_wb, key_hint_offset_y: *khoy_wb, key_symbol_color: *ksc_wb}
-      - {label: 这 P, click: p, label_symbol: "", popup: [], swipe_up: Escape,,  key_back_color: b_h1, key_text_color: *ktc_wb, hint: "       􀂶\n􀂷   􀂸\n􀂹   􀂺\n􀂻   􀂼", key_text_offset_x: *ktox_wb, key_text_offset_y: *ktoy_wb, key_hint_offset_x: *khox_wb, key_hint_offset_y: *khoy_wb, key_symbol_color: *ksc_wb}
+      - {label: 有 E, click: e, label_symbol: "", popup: [Escape], swipe_up: Escape, key_back_color: b_h1, key_text_color: *ktc_wb, hint: "       􀁬\n􀁪 􀁫􀁮 􀁮􀁯\n􀁰􀁱􀁲􀁳\n􀁴 􀁵􀁶 􀁷", key_text_offset_x: *ktox_wb, key_text_offset_y: *ktoy_wb, key_hint_offset_x: *khox_wb, key_hint_offset_y: *khoy_wb, key_symbol_color: *ksc_wb}
+      - {label: 的 R, click: r, label_symbol: "", popup: [], swipe_up: Escape, key_back_color: b_h1, key_text_color: *ktc_wb, hint: "       􀁣\n􀁠 􀁡 􀁢\n􀁤 􀁥 􀁦\n􀁧 􀁨 􀁩", key_text_offset_x: *ktox_wb, key_text_offset_y: *ktoy_wb, key_hint_offset_x: *khox_wb, key_hint_offset_y: *khoy_wb, key_symbol_color: *ksc_wb}
+      - {label: 和 T, click: t, label_symbol: "", popup: [], swipe_up: Escape, key_back_color: b_h1, key_text_color: *ubuntu_o, hint: "       􀁚\n􀁘  􀁙  􀁛\n􀁜    􀁝\n􀁞    􀁟", key_text_offset_x: *ktox_wb, key_text_offset_y: *ktoy_wb, key_hint_offset_x: *khox_wb, key_hint_offset_y: *khoy_wb, key_symbol_color: *ksc_wb}
+      - {label: 主 Y, click: y, label_symbol: "", popup: [], swipe_up: Escape, key_back_color: b_h1, key_text_color: *ubuntu_o, hint: "       􀂐\n􀂎  􀂏  􀂑\n􀂒    􀂓\n􀂔    􀂕", key_text_offset_x: *ktox_wb, key_text_offset_y: *ktoy_wb, key_hint_offset_x: *khox_wb, key_hint_offset_y: *khoy_wb, key_symbol_color: *ksc_wb}
+      - {label: 产 U, click: u, label_symbol: "", popup: [], swipe_up: Escape, key_back_color: b_h1, key_text_color: *ktc_wb, hint: "       􀂙\n􀂖 􀂗 􀂘 􀂚\n􀂛 􀂜  􀂝\n􀂞 􀂟 􀂠", key_text_offset_x: *ktox_wb, key_text_offset_y: *ktoy_wb, key_hint_offset_x: *khox_wb, key_hint_offset_y: *khoy_wb, key_symbol_color: *ksc_wb}
+      - {label: 不 I, click: i, label_symbol: "", popup: [], swipe_up: Escape, key_back_color: b_h1, key_text_color: *ktc_wb, hint: "       􀂣\n􀂡  􀂢  􀂤\n􀂥 􀂦 􀂧 􀂨\n􀂩 􀂪 􀂫􀂬", key_text_offset_x: *ktox_wb, key_text_offset_y: *ktoy_wb, key_hint_offset_x: *khox_wb, key_hint_offset_y: *khoy_wb, key_symbol_color: *ksc_wb}
+      - {label: 为 O, click: o, label_symbol: "", popup: [], swipe_up: Escape, key_back_color: b_h1, key_text_color: *ktc_wb, hint: "       􀂮\n􀂭 􀂯 􀂰\n􀂱 􀂲 􀂳\n􀂴    􀂵", key_text_offset_x: *ktox_wb, key_text_offset_y: *ktoy_wb, key_hint_offset_x: *khox_wb, key_hint_offset_y: *khoy_wb, key_symbol_color: *ksc_wb}
+      - {label: 这 P, click: p, label_symbol: "", popup: [], swipe_up: Escape, key_back_color: b_h1, key_text_color: *ktc_wb, hint: "       􀂶\n􀂷   􀂸\n􀂹   􀂺\n􀂻   􀂼", key_text_offset_x: *ktox_wb, key_text_offset_y: *ktoy_wb, key_hint_offset_x: *khox_wb, key_hint_offset_y: *khoy_wb, key_symbol_color: *ksc_wb}
 
       - {width: 5}
-      - {label: 工 A, click: a, label_symbol: "", popup: [select_all], swipe_up: Escape,, key_back_color: b_h2, key_text_color: *ktc_wb, hint: "       􀀜\n􀀝􀀞􀀟􀀠\n􀀡 􀀢􀀣􀀤\n􀀥􀀦􀀧􀀨", key_text_offset_x: *ktox_wb, key_text_offset_y: *ktoy_wb, key_hint_offset_x: *khox_wb, key_hint_offset_y: *khoy_wb, key_symbol_color: *ksc_wb}
-      - {label: 要 S, click: s, label_symbol: "", popup: [save], swipe_up: Escape,,  key_back_color: b_h2, key_text_color: *ktc_wb, hint: "       􀀘\n􀀙\n􀀚\n􀀛", key_text_offset_x: *ktox_wb, key_text_offset_y: *ktoy_wb, key_hint_offset_x: *khox_wb, key_hint_offset_y: *khoy_wb, key_symbol_color: *ksc_wb}
-      - {label: 在 D, click: d, label_symbol: "", popup: [], swipe_up: Escape,, key_back_color: b_h2, key_text_color: *ktc_wb, hint: "       􀀒\n􀀐   􀀑\n􀀓   􀀔\n􀀕 􀀖 􀀗", key_text_offset_x: *ktox_wb, key_text_offset_y: *ktoy_wb, key_hint_offset_x: *khox_wb, key_hint_offset_y: *khoy_wb, key_symbol_color: *ksc_wb}
-      - {label: 地 F, click: f, label_symbol: "", popup: [], swipe_up: Escape,,  key_back_color: key_fj_back_color, key_text_color: *ktc_wb, hint: "       􀀈\n􀀇􀀉􀀊\n􀀋􀀌􀀍\n􀀎    􀀏", key_text_offset_x: *ktox_wb, key_text_offset_y: *ktoy_wb, key_hint_offset_x: *khox_wb, key_hint_offset_y: *khoy_wb, key_symbol_color: *ksc_wb}
-      - {label: 一 G, click: g, label_symbol: "", popup: [], swipe_up: Escape,,  key_back_color: b_h2, key_text_color: *ubuntu_o, hint: "       􀀂\n􀀀    􀀁\n􀀃    􀀄\n􀀅    􀀆", key_text_offset_x: *ktox_wb, key_text_offset_y: *ktoy_wb, key_hint_offset_x: *khox_wb, key_hint_offset_y: *khoy_wb, key_symbol_color: *ksc_wb}
-      - {label: 上 H, click: h, label_symbol: "", popup: [], swipe_up: Escape,,  key_back_color: b_h2, key_text_color: *ubuntu_o, hint: "       􀀫\n􀀩 􀀪 􀀬\n􀀭 􀀮 􀀯\n􀀰 􀀱􀀲􀀳", key_text_offset_x: *ktox_wb, key_text_offset_y: *ktoy_wb, key_hint_offset_x: *khox_wb, key_hint_offset_y: *khoy_wb, key_symbol_color: *ksc_wb}
-      - {label: 是 J, click: j, label_symbol: "", popup: [], swipe_up: Escape,,  key_back_color: key_fj_back_color, key_text_color: *ktc_wb, hint: "       􀀸\n􀀴 􀀵 􀀶 􀀷\n􀀹    􀀺\n􀀻􀀼 􀀽", key_text_offset_x: *ktox_wb, key_text_offset_y: *ktoy_wb, key_hint_offset_x: *khox_wb, key_hint_offset_y: *khoy_wb, key_symbol_color: *ksc_wb}
-      - {label: 中 K, click: k, label_symbol: "", popup: [], swipe_up: Escape,,  key_back_color: b_h2, key_text_color: *ktc_wb, hint: "       􀁁\n􀀾\n􀀿\n􀁀", key_text_offset_x: *ktox_wb, key_text_offset_y: *ktoy_wb, key_hint_offset_x: *khox_wb, key_hint_offset_y: *khoy_wb, key_symbol_color: *ksc_wb}
-      - {label: 国 L, click: l, label_symbol: "", popup: [], swipe_up: Escape,,  key_back_color: b_h2, key_text_color: *ktc_wb, hint: "       􀁃\n􀁂􀁄􀁅􀁆\n􀁇􀁈􀁉􀁊\n􀁋􀁌􀁍􀁎", key_text_offset_x: *ktox_wb, key_text_offset_y: *ktoy_wb, key_hint_offset_x: *khox_wb, key_hint_offset_y: *khoy_wb, key_symbol_color: *ksc_wb}
+      - {label: 工 A, click: a, label_symbol: "", popup: [select_all], swipe_up: Escape, key_back_color: b_h2, key_text_color: *ktc_wb, hint: "       􀀜\n􀀝􀀞􀀟􀀠\n􀀡 􀀢􀀣􀀤\n􀀥􀀦􀀧􀀨", key_text_offset_x: *ktox_wb, key_text_offset_y: *ktoy_wb, key_hint_offset_x: *khox_wb, key_hint_offset_y: *khoy_wb, key_symbol_color: *ksc_wb}
+      - {label: 要 S, click: s, label_symbol: "", popup: [save], swipe_up: Escape, key_back_color: b_h2, key_text_color: *ktc_wb, hint: "       􀀘\n􀀙\n􀀚\n􀀛", key_text_offset_x: *ktox_wb, key_text_offset_y: *ktoy_wb, key_hint_offset_x: *khox_wb, key_hint_offset_y: *khoy_wb, key_symbol_color: *ksc_wb}
+      - {label: 在 D, click: d, label_symbol: "", popup: [], swipe_up: Escape, key_back_color: b_h2, key_text_color: *ktc_wb, hint: "       􀀒\n􀀐   􀀑\n􀀓   􀀔\n􀀕 􀀖 􀀗", key_text_offset_x: *ktox_wb, key_text_offset_y: *ktoy_wb, key_hint_offset_x: *khox_wb, key_hint_offset_y: *khoy_wb, key_symbol_color: *ksc_wb}
+      - {label: 地 F, click: f, label_symbol: "", popup: [], swipe_up: Escape, key_back_color: key_fj_back_color, key_text_color: *ktc_wb, hint: "       􀀈\n􀀇􀀉􀀊\n􀀋􀀌􀀍\n􀀎    􀀏", key_text_offset_x: *ktox_wb, key_text_offset_y: *ktoy_wb, key_hint_offset_x: *khox_wb, key_hint_offset_y: *khoy_wb, key_symbol_color: *ksc_wb}
+      - {label: 一 G, click: g, label_symbol: "", popup: [], swipe_up: Escape, key_back_color: b_h2, key_text_color: *ubuntu_o, hint: "       􀀂\n􀀀    􀀁\n􀀃    􀀄\n􀀅    􀀆", key_text_offset_x: *ktox_wb, key_text_offset_y: *ktoy_wb, key_hint_offset_x: *khox_wb, key_hint_offset_y: *khoy_wb, key_symbol_color: *ksc_wb}
+      - {label: 上 H, click: h, label_symbol: "", popup: [], swipe_up: Escape, key_back_color: b_h2, key_text_color: *ubuntu_o, hint: "       􀀫\n􀀩 􀀪 􀀬\n􀀭 􀀮 􀀯\n􀀰 􀀱􀀲􀀳", key_text_offset_x: *ktox_wb, key_text_offset_y: *ktoy_wb, key_hint_offset_x: *khox_wb, key_hint_offset_y: *khoy_wb, key_symbol_color: *ksc_wb}
+      - {label: 是 J, click: j, label_symbol: "", popup: [], swipe_up: Escape, key_back_color: key_fj_back_color, key_text_color: *ktc_wb, hint: "       􀀸\n􀀴 􀀵 􀀶 􀀷\n􀀹    􀀺\n􀀻􀀼 􀀽", key_text_offset_x: *ktox_wb, key_text_offset_y: *ktoy_wb, key_hint_offset_x: *khox_wb, key_hint_offset_y: *khoy_wb, key_symbol_color: *ksc_wb}
+      - {label: 中 K, click: k, label_symbol: "", popup: [], swipe_up: Escape, key_back_color: b_h2, key_text_color: *ktc_wb, hint: "       􀁁\n􀀾\n􀀿\n􀁀", key_text_offset_x: *ktox_wb, key_text_offset_y: *ktoy_wb, key_hint_offset_x: *khox_wb, key_hint_offset_y: *khoy_wb, key_symbol_color: *ksc_wb}
+      - {label: 国 L, click: l, label_symbol: "", popup: [], swipe_up: Escape, key_back_color: b_h2, key_text_color: *ktc_wb, hint: "       􀁃\n􀁂􀁄􀁅􀁆\n􀁇􀁈􀁉􀁊\n􀁋􀁌􀁍􀁎", key_text_offset_x: *ktox_wb, key_text_offset_y: *ktoy_wb, key_hint_offset_x: *khox_wb, key_hint_offset_y: *khoy_wb, key_symbol_color: *ksc_wb}
       - {width: 5}
 
       - {click: Shift_L, label_symbol: " ", long_click: Shift_L, double_click: Shift_L_double_lock, width: 12, key_text_size: *gnkey_t, hilited_key_back_color: b_enter, key_back_color: b_bs, key_text_color: t_bs}
-      - {click: z, label_symbol: "", popup: [], swipe_up: Escape,, key_back_color: b_h3, key_text_color: *ubuntu_o, key_text_size: *main_kts}
-      - {label: 经 X, click: x, label_symbol: "", popup: [cut], swipe_up: Escape,, key_back_color: b_h3, key_text_color: *ktc_wb, hint: "       􀃧\n􀃨    􀃩􀃪\n􀃫 􀃬 􀃭􀃮\n􀃯 􀃰 􀃱􀃲", key_text_offset_x: *ktox_wb, key_text_offset_y: *ktoy_wb, key_hint_offset_x: *khox_wb, key_hint_offset_y: *khoy_wb, key_symbol_color: *ksc_wb}
-      - {label: 以 C, click: c, label_symbol: "", popup: [copy], swipe_up: Escape,, swipe_down: ' ', key_back_color: b_h3, key_text_color: *ktc_wb, hint: "       􀃟\n􀃠    􀃡\n􀃢    􀃣\n􀃤 􀃥 􀃦", key_text_offset_x: *ktox_wb, key_text_offset_y: *ktoy_wb, key_hint_offset_x: *khox_wb, key_hint_offset_y: *khoy_wb, key_symbol_color: *ksc_wb}
-      - {label: 发 V, click: v, label_symbol: "", popup: [paste], swipe_up: Escape,, key_back_color: b_h3, key_text_color: *ktc_wb, hint: "       􀃙\n􀃘   􀃚\n􀃛   􀃜\n􀃝   􀃞", key_text_offset_x: *ktox_wb, key_text_offset_y: *ktoy_wb, key_hint_offset_x: *khox_wb, key_hint_offset_y: *khoy_wb, key_symbol_color: *ksc_wb}
-      - {label: 了 B, click: b, label_symbol: "", popup: [], swipe_up: Escape,,  key_back_color: b_h3, key_text_color: *ktc_wb, hint: "       􀃌\n􀃋 􀃍 􀃎 􀃏\n􀃐 􀃑 􀃒 􀃓\n􀃔􀃕􀃖􀃗", key_text_offset_x: *ktox_wb, key_text_offset_y: *ktoy_wb, key_hint_offset_x: *khox_wb, key_hint_offset_y: *khoy_wb, key_symbol_color: *ksc_wb}
-      - {label: 民 N, click: n, label_symbol: "", popup: [], swipe_up: Escape,,  key_back_color: b_h3, key_text_color: *ubuntu_o, hint: "       􀂾\n􀂽􀂿􀃀􀃁􀃂\n􀃃􀃄􀃅􀃆\n􀃇 􀃈􀃉􀃊", key_text_offset_x: *ktox_wb, key_text_offset_y: *ktoy_wb, key_hint_offset_x: *khox_wb, key_hint_offset_y: *khoy_wb, key_symbol_color: *ksc_wb}
-      - {label: 同 M, click: m, label_symbol: "", popup: [], swipe_up: Escape,,  key_back_color: b_h3, key_text_color: *ktc_wb, hint: "       􀁏\n􀁐􀁑􀁒\n􀁓   􀁔\n􀁕􀁖􀁗", key_text_offset_x: *ktox_wb, key_text_offset_y: *ktoy_wb, key_hint_offset_x: *khox_wb, key_hint_offset_y: *khoy_wb, key_symbol_color: *ksc_wb}
+      - {click: z, label_symbol: "", popup: [], swipe_up: Escape, key_back_color: b_h3, key_text_color: *ubuntu_o, key_text_size: *main_kts}
+      - {label: 经 X, click: x, label_symbol: "", popup: [cut], swipe_up: Escape, key_back_color: b_h3, key_text_color: *ktc_wb, hint: "       􀃧\n􀃨    􀃩􀃪\n􀃫 􀃬 􀃭􀃮\n􀃯 􀃰 􀃱􀃲", key_text_offset_x: *ktox_wb, key_text_offset_y: *ktoy_wb, key_hint_offset_x: *khox_wb, key_hint_offset_y: *khoy_wb, key_symbol_color: *ksc_wb}
+      - {label: 以 C, click: c, label_symbol: "", popup: [copy], swipe_up: Escape, swipe_down: "Down", key_back_color: b_h3, key_text_color: *ktc_wb, hint: "       􀃟\n􀃠    􀃡\n􀃢    􀃣\n􀃤 􀃥 􀃦", key_text_offset_x: *ktox_wb, key_text_offset_y: *ktoy_wb, key_hint_offset_x: *khox_wb, key_hint_offset_y: *khoy_wb, key_symbol_color: *ksc_wb}
+      - {label: 发 V, click: v, label_symbol: "", popup: [paste], swipe_up: Escape, key_back_color: b_h3, key_text_color: *ktc_wb, hint: "       􀃙\n􀃘   􀃚\n􀃛   􀃜\n􀃝   􀃞", key_text_offset_x: *ktox_wb, key_text_offset_y: *ktoy_wb, key_hint_offset_x: *khox_wb, key_hint_offset_y: *khoy_wb, key_symbol_color: *ksc_wb}
+      - {label: 了 B, click: b, label_symbol: "", popup: [], swipe_up: Escape, key_back_color: b_h3, key_text_color: *ktc_wb, hint: "       􀃌\n􀃋 􀃍 􀃎 􀃏\n􀃐 􀃑 􀃒 􀃓\n􀃔􀃕􀃖􀃗", key_text_offset_x: *ktox_wb, key_text_offset_y: *ktoy_wb, key_hint_offset_x: *khox_wb, key_hint_offset_y: *khoy_wb, key_symbol_color: *ksc_wb}
+      - {label: 民 N, click: n, label_symbol: "", popup: [Keyboard_app_keys], swipe_up: Escape, key_back_color: b_h3, key_text_color: *ubuntu_o, hint: "       􀂾\n􀂽􀂿􀃀􀃁􀃂\n􀃃􀃄􀃅􀃆\n􀃇 􀃈􀃉􀃊", key_text_offset_x: *ktox_wb, key_text_offset_y: *ktoy_wb, key_hint_offset_x: *khox_wb, key_hint_offset_y: *khoy_wb, key_symbol_color: *ksc_wb}
+      - {label: 同 M, click: m, label_symbol: "", popup: [Keyboard_markdown], swipe_up: Escape, key_back_color: b_h3, key_text_color: *ktc_wb, hint: "       􀁏\n􀁐􀁑􀁒\n􀁓   􀁔\n􀁕􀁖􀁗", key_text_offset_x: *ktox_wb, key_text_offset_y: *ktoy_wb, key_hint_offset_x: *khox_wb, key_hint_offset_y: *khoy_wb, key_symbol_color: *ksc_wb}
       - {click: BackSpace, swipe_right: Delete, key_text_size: *gnkey_t, width: 18, key_back_color: b_bs, key_text_color: t_bs}
 
       - {click: Keyboard_symbols, label_symbol: "主\/方\/配", popup: [Theme_settings, Menu, Color_switch], swipe_up: Escape, width: 15, height: *keyb_end_h, round_corner: *enter_round, key_symbol_offset_y: *ksoy_c, symbol_text_size: *sts_c, key_text_size: *gnkey_t, key_back_color: b_gn, key_text_color: t_gn}
-      - {click: Keyboard_number, label_symbol: "编\/A\/M", popup: [Keyboard_editor, Keyboard_app_keys, Keyboard_markdown], swipe_up: Escape, composing: delimiter, key_symbol_offset_y: *ksoy_c, symbol_text_size: *sts_c, key_text_size: *gnkey_t, key_back_color: b_gn, key_text_color: t_gn}
+      - {click: Keyboard_number, label_symbol: "编辑", popup: [Keyboard_editor], swipe_up: Escape, composing: delimiter, key_symbol_offset_y: *ksoy_c, symbol_text_size: *sts_c, key_text_size: *gnkey_t, key_back_color: b_gn, key_text_color: t_gn}
       - {click: full_comma, label_symbol: ",", popup: [half_comma], swipe_up: Escape, key_symbol_offset_y: *ksoy_c, symbol_text_size: *sts_c, key_text_size: *gnkey_c, key_back_color: b_gn, key_text_color: t_gn}
       - {click: space, long_click: TGboard, swipe_left: "Left", swipe_right: "Right", swipe_up: "Up", swipe_down: "Down", width: 37, key_back_color: b_kg, key_text_color: t_kg}
       - {click: full_period, label_symbol: ".", popup: [half_period], swipe_up: Escape, key_symbol_offset_y: *ksoy_c, symbol_text_size: *sts_c, key_text_size: *gnkey_p, key_back_color: b_gn, key_text_color: t_gn}
-      - {click: Return, label_symbol: "", popup: [], swipe_up: Escape,, key_text_size: *gnkey_t, width: 18, round_corner: *enter_round, key_symbol_offset_y: *ksoy_c, symbol_text_size: *sts_c, key_back_color: b_enter, key_text_color: t_enter, key_symbol_color: t_enter}
+      - {click: Return, label_symbol: "", popup: [], swipe_up: Escape, key_text_size: *gnkey_t, width: 18, round_corner: *enter_round, key_symbol_offset_y: *ksoy_c, symbol_text_size: *sts_c, key_back_color: b_enter, key_text_color: t_enter, key_symbol_color: t_enter}
 
   mini:
     name: 精简键盘
@@ -1597,15 +1819,16 @@ preset_keyboards:
 
       - {click: Key_null, height: *keyb_nullline_h, width: 100, key_back_color: *ubuntu_o, key_text_color: *ubuntu_o}
 
-      - {click: Keyboard_default, height: *keyb_foot_h, width: 17, key_text_size: "16", key_back_color: b_enter, key_text_color: t_enter}
-      - {click: Keyboard_markdown_Common, width: 11, key_text_size: "16", key_back_color: key_back_color, key_text_color: t_enter}
-      - {click: Keyboard_markdown_Title, width: 11, key_text_size: "16", key_back_color: b_gn, key_text_color: t_gn}
-      - {click: Keyboard_markdown_Block, width: 11, key_text_size: "16", key_back_color: b_gn, key_text_color: t_gn}
-      - {click: Keyboard_markdown_Content, width: 11, key_text_size: "16", key_back_color: b_gn, key_text_color: t_gn}
-      - {click: Keyboard_markdown_Highlight, width: 11, key_text_size: "16", key_back_color: b_gn, key_text_color: t_gn}
-      - {click: Keyboard_markdown_more, width: 11, key_text_size: "16", key_back_color: b_gn, key_text_color: t_gn}
-      - {click: BackSpace, swipe_right: Delete, width: 17, key_back_color: b_bs, key_text_color: t_bs}
-      #- {click: Return, width: 17, key_text_size: "16", key_back_color: b_enter, key_text_color: t_enter}
+      - {click: Keyboard_default, height: *keyb_foot_h, width: 16, key_text_size: "16", key_back_color: b_enter, key_text_color: t_enter}
+      - {click: Keyboard_markdown_Common, width: 12, key_text_size: "16", key_back_color: key_back_color, key_text_color: t_enter}
+      - {click: Keyboard_markdown_Title, width: 12, key_text_size: "16", key_back_color: b_gn, key_text_color: t_gn}
+      - {click: Keyboard_markdown_Block, width: 12, key_text_size: "16", key_back_color: b_gn, key_text_color: t_gn}
+      - {click: Keyboard_markdown_Content, width: 12, key_text_size: "16", key_back_color: b_gn, key_text_color: t_gn}
+      - {click: Keyboard_markdown_Highlight, width: 12, key_text_size: "16", key_back_color: b_gn, key_text_color: t_gn}
+      - {click: Keyboard_markdown_Excel, width: 12, key_text_size: "16", key_back_color: b_gn, key_text_color: t_enter}
+      - {click: Keyboard_markdown_more, width: 12, key_text_size: "16", key_back_color: b_gn, key_text_color: t_gn}
+      #- {click: BackSpace, swipe_right: Delete, width: 17, key_back_color: b_bs, key_text_color: t_bs}
+      #- {click: Return, width: 16, key_text_size: "16", key_back_color: b_enter, key_text_color: t_enter}
 
   markdown_Title:
     author: "csjtl"
@@ -1631,15 +1854,16 @@ preset_keyboards:
 
       - {click: Key_null, height: *keyb_nullline_h, width: 100, key_back_color: *ubuntu_o, key_text_color: *ubuntu_o}
 
-      - {click: Keyboard_default, height: *keyb_foot_h, width: 17, key_text_size: "16", key_back_color: b_enter, key_text_color: t_enter}
-      - {click: Keyboard_markdown_Common, width: 11, key_text_size: "16", key_back_color: b_gn, key_text_color: t_gn}
-      - {click: Keyboard_markdown_Title, width: 11, key_text_size: "16", key_back_color: key_back_color, key_text_color: t_enter}
-      - {click: Keyboard_markdown_Block, width: 11, key_text_size: "16", key_back_color: b_gn, key_text_color: t_gn}
-      - {click: Keyboard_markdown_Content, width: 11, key_text_size: "16", key_back_color: b_gn, key_text_color: t_gn}
-      - {click: Keyboard_markdown_Highlight, width: 11, key_text_size: "16", key_back_color: b_gn, key_text_color: t_gn}
-      - {click: Keyboard_markdown_more, width: 11, key_text_size: "16", key_back_color: b_gn, key_text_color: t_gn}
-      - {click: BackSpace, swipe_right: Delete, width: 17, key_back_color: b_bs, key_text_color: t_bs}
-      #- {click: Return, width: 17, key_text_size: "16", key_back_color: b_enter, key_text_color: t_enter}
+      - {click: Keyboard_default, height: *keyb_foot_h, width: 16, key_text_size: "16", key_back_color: b_enter, key_text_color: t_enter}
+      - {click: Keyboard_markdown_Common, width: 12, key_text_size: "16", key_back_color: b_gn, key_text_color: t_gn}
+      - {click: Keyboard_markdown_Title, width: 12, key_text_size: "16", key_back_color: key_back_color, key_text_color: t_enter}
+      - {click: Keyboard_markdown_Block, width: 12, key_text_size: "16", key_back_color: b_gn, key_text_color: t_gn}
+      - {click: Keyboard_markdown_Content, width: 12, key_text_size: "16", key_back_color: b_gn, key_text_color: t_gn}
+      - {click: Keyboard_markdown_Highlight, width: 12, key_text_size: "16", key_back_color: b_gn, key_text_color: t_gn}
+      - {click: Keyboard_markdown_Excel, width: 12, key_text_size: "16", key_back_color: b_gn, key_text_color: t_enter}
+      - {click: Keyboard_markdown_more, width: 12, key_text_size: "16", key_back_color: b_gn, key_text_color: t_gn}
+      #- {click: BackSpace, swipe_right: Delete, width: 17, key_back_color: b_bs, key_text_color: t_bs}
+      #- {click: Return, width: 16, key_text_size: "16", key_back_color: b_enter, key_text_color: t_enter}
 
   markdown_Block:
     author: "csjtl"
@@ -1665,15 +1889,16 @@ preset_keyboards:
 
       - {click: Key_null, height: *keyb_nullline_h, width: 100, key_back_color: *ubuntu_o, key_text_color: *ubuntu_o}
 
-      - {click: Keyboard_default, height: *keyb_foot_h, width: 17, key_text_size: "16", key_back_color: b_enter, key_text_color: t_enter}
-      - {click: Keyboard_markdown_Common, width: 11, key_text_size: "16", key_back_color: b_gn, key_text_color: t_gn}
-      - {click: Keyboard_markdown_Title, width: 11, key_text_size: "16", key_back_color: b_gn, key_text_color: t_gn}
-      - {click: Keyboard_markdown_Block, width: 11, key_text_size: "16", key_back_color: key_back_color, key_text_color: t_enter}
-      - {click: Keyboard_markdown_Content, width: 11, key_text_size: "16", key_back_color: b_gn, key_text_color: t_gn}
-      - {click: Keyboard_markdown_Highlight, width: 11, key_text_size: "16", key_back_color: b_gn, key_text_color: t_gn}
-      - {click: Keyboard_markdown_more, width: 11, key_text_size: "16", key_back_color: b_gn, key_text_color: t_gn}
-      - {click: BackSpace, swipe_right: Delete, width: 17, key_back_color: b_bs, key_text_color: t_bs}
-      #- {click: Return, width: 17, key_text_size: "16", key_back_color: b_enter, key_text_color: t_enter}
+      - {click: Keyboard_default, height: *keyb_foot_h, width: 16, key_text_size: "16", key_back_color: b_enter, key_text_color: t_enter}
+      - {click: Keyboard_markdown_Common, width: 12, key_text_size: "16", key_back_color: b_gn, key_text_color: t_gn}
+      - {click: Keyboard_markdown_Title, width: 12, key_text_size: "16", key_back_color: b_gn, key_text_color: t_gn}
+      - {click: Keyboard_markdown_Block, width: 12, key_text_size: "16", key_back_color: key_back_color, key_text_color: t_enter}
+      - {click: Keyboard_markdown_Content, width: 12, key_text_size: "16", key_back_color: b_gn, key_text_color: t_gn}
+      - {click: Keyboard_markdown_Highlight, width: 12, key_text_size: "16", key_back_color: b_gn, key_text_color: t_gn}
+      - {click: Keyboard_markdown_Excel, width: 12, key_text_size: "16", key_back_color: b_gn, key_text_color: t_enter}
+      - {click: Keyboard_markdown_more, width: 12, key_text_size: "16", key_back_color: b_gn, key_text_color: t_gn}
+      #- {click: BackSpace, swipe_right: Delete, width: 17, key_back_color: b_bs, key_text_color: t_bs}
+      #- {click: Return, width: 16, key_text_size: "16", key_back_color: b_enter, key_text_color: t_enter}
 
   markdown_Content:
     author: "csjtl"
@@ -1699,15 +1924,16 @@ preset_keyboards:
       
       - {click: Key_null, height: *keyb_nullline_h, width: 100, key_back_color: *ubuntu_o, key_text_color: *ubuntu_o}
 
-      - {click: Keyboard_default, height: *keyb_foot_h, width: 17, key_text_size: "16", key_back_color: b_enter, key_text_color: t_enter}
-      - {click: Keyboard_markdown_Common, width: 11, key_text_size: "16", key_back_color: b_gn, key_text_color: t_gn}
-      - {click: Keyboard_markdown_Title, width: 11, key_text_size: "16", key_back_color: b_gn, key_text_color: t_gn}
-      - {click: Keyboard_markdown_Block, width: 11, key_text_size: "16", key_back_color: b_gn, key_text_color: t_gn}
-      - {click: Keyboard_markdown_Content, width: 11, key_text_size: "16", key_back_color: key_back_color, key_text_color: t_enter}
-      - {click: Keyboard_markdown_Highlight, width: 11, key_text_size: "16", key_back_color: b_gn, key_text_color: t_gn}
-      - {click: Keyboard_markdown_more, width: 11, key_text_size: "16", key_back_color: b_gn, key_text_color: t_gn}
-      - {click: BackSpace, swipe_right: Delete, width: 17, key_back_color: b_bs, key_text_color: t_bs}
-      #- {click: Return, width: 17, key_text_size: "16", key_back_color: b_enter, key_text_color: t_enter}
+      - {click: Keyboard_default, height: *keyb_foot_h, width: 16, key_text_size: "16", key_back_color: b_enter, key_text_color: t_enter}
+      - {click: Keyboard_markdown_Common, width: 12, key_text_size: "16", key_back_color: b_gn, key_text_color: t_gn}
+      - {click: Keyboard_markdown_Title, width: 12, key_text_size: "16", key_back_color: b_gn, key_text_color: t_gn}
+      - {click: Keyboard_markdown_Block, width: 12, key_text_size: "16", key_back_color: b_gn, key_text_color: t_gn}
+      - {click: Keyboard_markdown_Content, width: 12, key_text_size: "16", key_back_color: key_back_color, key_text_color: t_enter}
+      - {click: Keyboard_markdown_Highlight, width: 12, key_text_size: "16", key_back_color: b_gn, key_text_color: t_gn}
+      - {click: Keyboard_markdown_Excel, width: 12, key_text_size: "16", key_back_color: b_gn, key_text_color: t_enter}
+      - {click: Keyboard_markdown_more, width: 12, key_text_size: "16", key_back_color: b_gn, key_text_color: t_gn}
+      #- {click: BackSpace, swipe_right: Delete, width: 17, key_back_color: b_bs, key_text_color: t_bs}
+      #- {click: Return, width: 16, key_text_size: "16", key_back_color: b_enter, key_text_color: t_enter}
 
   markdown_Highlight:
     author: "csjtl"
@@ -1733,15 +1959,200 @@ preset_keyboards:
 
       - {click: Key_null, height: *keyb_nullline_h, width: 100, key_back_color: *ubuntu_o, key_text_color: *ubuntu_o}
 
-      - {click: Keyboard_default, height: *keyb_foot_h, width: 17, key_text_size: "16", key_back_color: b_enter, key_text_color: t_enter}
-      - {click: Keyboard_markdown_Common, width: 11, key_text_size: "16", key_back_color: b_gn, key_text_color: t_gn}
-      - {click: Keyboard_markdown_Title, width: 11, key_text_size: "16", key_back_color: b_gn, key_text_color: t_gn}
-      - {click: Keyboard_markdown_Block, width: 11, key_text_size: "16", key_back_color: b_gn, key_text_color: t_gn}
-      - {click: Keyboard_markdown_Content, width: 11, key_text_size: "16", key_back_color: b_gn, key_text_color: t_gn}
-      - {click: Keyboard_markdown_Highlight, width: 11, key_text_size: "16", key_back_color: key_back_color, key_text_color: t_enter}
-      - {click: Keyboard_markdown_more, width: 11, key_text_size: "16", key_back_color: b_gn, key_text_color: t_gn}
-      - {click: BackSpace, swipe_right: Delete, width: 17, key_back_color: b_bs, key_text_color: t_bs}
-      #- {click: Return, width: 17, key_text_size: "16", key_back_color: b_enter, key_text_color: t_enter}
+      - {click: Keyboard_default, height: *keyb_foot_h, width: 16, key_text_size: "16", key_back_color: b_enter, key_text_color: t_enter}
+      - {click: Keyboard_markdown_Common, width: 12, key_text_size: "16", key_back_color: b_gn, key_text_color: t_gn}
+      - {click: Keyboard_markdown_Title, width: 12, key_text_size: "16", key_back_color: b_gn, key_text_color: t_gn}
+      - {click: Keyboard_markdown_Block, width: 12, key_text_size: "16", key_back_color: b_gn, key_text_color: t_gn}
+      - {click: Keyboard_markdown_Content, width: 12, key_text_size: "16", key_back_color: b_gn, key_text_color: t_gn}
+      - {click: Keyboard_markdown_Highlight, width: 12, key_text_size: "16", key_back_color: key_back_color, key_text_color: t_enter}
+      - {click: Keyboard_markdown_Excel, width: 12, key_text_size: "16", key_back_color: b_gn, key_text_color: t_enter}
+      - {click: Keyboard_markdown_more, width: 12, key_text_size: "16", key_back_color: b_gn, key_text_color: t_gn}
+      #- {click: BackSpace, swipe_right: Delete, width: 17, key_back_color: b_bs, key_text_color: t_bs}
+      #- {click: Return, width: 16, key_text_size: "16", key_back_color: b_enter, key_text_color: t_enter}
+
+  markdown_Excel:
+    author: "csjtl"
+    ascii_mode: 1
+    name: markdown Excel
+    width: 33.3
+    keys:
+      - {click: md_1x2}
+      - {click: md_2x2}
+      - {click: md_3x2}
+
+      - {click: Key_null, height: 11, width: 100, key_back_color: *ubuntu_o, key_text_color: *ubuntu_o}
+
+      - {click: md_oneleh, width: 32}
+      - {click: Key_null, width: 0.7, key_back_color: *ubuntu_o, key_text_color: *ubuntu_o}
+      - {click: md_addmoreleh_1}
+      - {click: md_addmoreleh_2}
+
+      - {click: md_addoneleh, width: 32}
+      - {click: Key_null, width: 0.7, key_back_color: *ubuntu_o, key_text_color: *ubuntu_o}
+      - {click: md_addmoreleh, width: 66.6}
+
+      - {click: Key_null, height: 11, width: 100, key_back_color: *ubuntu_o, key_text_color: *ubuntu_o}
+
+      - {click: md_oneheh, width: 32}
+      - {click: Key_null, width: 0.7, key_back_color: *ubuntu_o, key_text_color: *ubuntu_o}
+      - {click: md_addoneheh, width: 66.6}
+
+      - {click: md_twoheh, width: 32}
+      - {click: Key_null, width: 0.7, key_back_color: *ubuntu_o, key_text_color: *ubuntu_o}
+      - {click: md_addtwoheh, width: 66.6}
+
+      - {click: md_addmoreheh_1, width: 32}
+      - {click: Key_null, width: 0.7, key_back_color: *ubuntu_o, key_text_color: *ubuntu_o}
+      - {click: md_addmoreheh_2, width: 66.6}
+
+      - {click: Key_null, height: *keyb_nullline_h, width: 100, key_back_color: *ubuntu_o, key_text_color: *ubuntu_o}
+
+      - {click: Keyboard_default, height: *keyb_foot_h, width: 16, key_text_size: "16", key_back_color: b_enter, key_text_color: t_enter}
+      - {click: Keyboard_markdown_Excel_null, width: 12, key_text_size: "16", key_back_color: key_back_color, key_text_color: t_enter}
+      - {click: Keyboard_markdown_Excel_Left, width: 12, key_text_size: "16", key_back_color: b_gn, key_text_color: t_enter}
+      - {click: Keyboard_markdown_Excel_Middle, width: 12, key_text_size: "16", key_back_color: b_gn, key_text_color: t_enter}
+      - {click: Keyboard_markdown_Excel_Right, width: 12, key_text_size: "16", key_back_color: b_gn, key_text_color: t_enter}
+      - {click: Keyboard_markdown_more, width: 12, key_text_size: "16", key_back_color: b_gn, key_text_color: t_gn}
+      #- {click: BackSpace, swipe_right: Delete, width: 17, key_back_color: b_bs, key_text_color: t_bs}
+      - {click: Return, width: 16, key_text_size: "16", key_back_color: b_enter, key_text_color: t_enter}
+
+  markdown_Excel_Left:
+    author: "csjtl"
+    ascii_mode: 1
+    name: markdown Excel Left
+    width: 33.3
+    keys:
+      - {click: md_L_1x2}
+      - {click: md_L_2x2}
+      - {click: md_L_3x2}
+
+      - {click: Key_null, height: 11, width: 100, key_back_color: *ubuntu_o, key_text_color: *ubuntu_o}
+
+      - {click: md_L_oneleh, width: 32}
+      - {click: Key_null, width: 0.7, key_back_color: *ubuntu_o, key_text_color: *ubuntu_o}
+      - {click: md_L_addmoreleh_1}
+      - {click: md_L_addmoreleh_2}
+
+      - {click: md_L_addoneleh, width: 32}
+      - {click: Key_null, width: 0.7, key_back_color: *ubuntu_o, key_text_color: *ubuntu_o}
+      - {click: md_L_addmoreleh, width: 66.6}
+
+      - {click: Key_null, height: 11, width: 100, key_back_color: *ubuntu_o, key_text_color: *ubuntu_o}
+
+      - {click: md_L_oneheh, width: 32}
+      - {click: Key_null, width: 0.7, key_back_color: *ubuntu_o, key_text_color: *ubuntu_o}
+      - {click: md_L_addoneheh, width: 66.6}
+
+      - {click: md_L_twoheh, width: 32}
+      - {click: Key_null, width: 0.7, key_back_color: *ubuntu_o, key_text_color: *ubuntu_o}
+      - {click: md_L_addtwoheh, width: 66.6}
+
+      - {click: md_L_addmoreheh_1, width: 32}
+      - {click: Key_null, width: 0.7, key_back_color: *ubuntu_o, key_text_color: *ubuntu_o}
+      - {click: md_L_addmoreheh_2, width: 66.6}
+
+      - {click: Key_null, height: *keyb_nullline_h, width: 100, key_back_color: *ubuntu_o, key_text_color: *ubuntu_o}
+
+      - {click: Keyboard_default, height: *keyb_foot_h, width: 16, key_text_size: "16", key_back_color: b_enter, key_text_color: t_enter}
+      - {click: Keyboard_markdown_Excel_null, width: 12, key_text_size: "16", key_back_color: b_gn, key_text_color: t_enter}
+      - {click: Keyboard_markdown_Excel_Left, width: 12, key_text_size: "16", key_back_color: key_back_color, key_text_color: t_enter}
+      - {click: Keyboard_markdown_Excel_Middle, width: 12, key_text_size: "16", key_back_color: b_gn, key_text_color: t_enter}
+      - {click: Keyboard_markdown_Excel_Right, width: 12, key_text_size: "16", key_back_color: b_gn, key_text_color: t_enter}
+      - {click: Keyboard_markdown_more, width: 12, key_text_size: "16", key_back_color: b_gn, key_text_color: t_gn}
+      #- {click: BackSpace, swipe_right: Delete, width: 17, key_back_color: b_bs, key_text_color: t_bs}
+      - {click: Return, width: 16, key_text_size: "16", key_back_color: b_enter, key_text_color: t_enter}
+
+  markdown_Excel_Middle:
+    author: "csjtl"
+    ascii_mode: 1
+    name: markdown Excel Middle
+    width: 33.3
+    keys:
+      - {click: md_M_1x2}
+      - {click: md_M_2x2}
+      - {click: md_M_3x2}
+
+      - {click: Key_null, height: 11, width: 100, key_back_color: *ubuntu_o, key_text_color: *ubuntu_o}
+
+      - {click: md_M_oneleh, width: 32}
+      - {click: Key_null, width: 0.7, key_back_color: *ubuntu_o, key_text_color: *ubuntu_o}
+      - {click: md_M_addmoreleh_1}
+      - {click: md_M_addmoreleh_2}
+
+      - {click: md_M_addoneleh, width: 32}
+      - {click: Key_null, width: 0.7, key_back_color: *ubuntu_o, key_text_color: *ubuntu_o}
+      - {click: md_M_addmoreleh, width: 66.6}
+
+      - {click: Key_null, height: 11, width: 100, key_back_color: *ubuntu_o, key_text_color: *ubuntu_o}
+
+      - {click: md_M_oneheh, width: 32}
+      - {click: Key_null, width: 0.7, key_back_color: *ubuntu_o, key_text_color: *ubuntu_o}
+      - {click: md_M_addoneheh, width: 66.6}
+
+      - {click: md_M_twoheh, width: 32}
+      - {click: Key_null, width: 0.7, key_back_color: *ubuntu_o, key_text_color: *ubuntu_o}
+      - {click: md_M_addtwoheh, width: 66.6}
+
+      - {click: md_M_addmoreheh_1, width: 32}
+      - {click: Key_null, width: 0.7, key_back_color: *ubuntu_o, key_text_color: *ubuntu_o}
+      - {click: md_M_addmoreheh_2, width: 66.6}
+
+      - {click: Key_null, height: *keyb_nullline_h, width: 100, key_back_color: *ubuntu_o, key_text_color: *ubuntu_o}
+
+      - {click: Keyboard_default, height: *keyb_foot_h, width: 16, key_text_size: "16", key_back_color: b_enter, key_text_color: t_enter}
+      - {click: Keyboard_markdown_Excel_null, width: 12, key_text_size: "16", key_back_color: b_gn, key_text_color: t_enter}
+      - {click: Keyboard_markdown_Excel_Left, width: 12, key_text_size: "16", key_back_color: b_gn, key_text_color: t_enter}
+      - {click: Keyboard_markdown_Excel_Middle, width: 12, key_text_size: "16", key_back_color: key_back_color, key_text_color: t_enter}
+      - {click: Keyboard_markdown_Excel_Right, width: 12, key_text_size: "16", key_back_color: b_gn, key_text_color: t_enter}
+      - {click: Keyboard_markdown_more, width: 12, key_text_size: "16", key_back_color: b_gn, key_text_color: t_gn}
+      #- {click: BackSpace, swipe_right: Delete, width: 17, key_back_color: b_bs, key_text_color: t_bs}
+      - {click: Return, width: 16, key_text_size: "16", key_back_color: b_enter, key_text_color: t_enter}
+
+  markdown_Excel_Right:
+    author: "csjtl"
+    ascii_mode: 1
+    name: markdown Excel Right
+    width: 33.3
+    keys:
+      - {click: md_R_1x2}
+      - {click: md_R_2x2}
+      - {click: md_R_3x2}
+
+      - {click: Key_null, height: 11, width: 100, key_back_color: *ubuntu_o, key_text_color: *ubuntu_o}
+
+      - {click: md_R_oneleh, width: 32}
+      - {click: Key_null, width: 0.7, key_back_color: *ubuntu_o, key_text_color: *ubuntu_o}
+      - {click: md_R_addmoreleh_1}
+      - {click: md_R_addmoreleh_2}
+
+      - {click: md_R_addoneleh, width: 32}
+      - {click: Key_null, width: 0.7, key_back_color: *ubuntu_o, key_text_color: *ubuntu_o}
+      - {click: md_R_addmoreleh, width: 66.6}
+
+      - {click: Key_null, height: 11, width: 100, key_back_color: *ubuntu_o, key_text_color: *ubuntu_o}
+
+      - {click: md_R_oneheh, width: 32}
+      - {click: Key_null, width: 0.7, key_back_color: *ubuntu_o, key_text_color: *ubuntu_o}
+      - {click: md_R_addoneheh, width: 66.6}
+
+      - {click: md_R_twoheh, width: 32}
+      - {click: Key_null, width: 0.7, key_back_color: *ubuntu_o, key_text_color: *ubuntu_o}
+      - {click: md_R_addtwoheh, width: 66.6}
+
+      - {click: md_R_addmoreheh_1, width: 32}
+      - {click: Key_null, width: 0.7, key_back_color: *ubuntu_o, key_text_color: *ubuntu_o}
+      - {click: md_R_addmoreheh_2, width: 66.6}
+
+      - {click: Key_null, height: *keyb_nullline_h, width: 100, key_back_color: *ubuntu_o, key_text_color: *ubuntu_o}
+
+      - {click: Keyboard_default, height: *keyb_foot_h, width: 16, key_text_size: "16", key_back_color: b_enter, key_text_color: t_enter}
+      - {click: Keyboard_markdown_Excel_null, width: 12, key_text_size: "16", key_back_color: b_gn, key_text_color: t_enter}
+      - {click: Keyboard_markdown_Excel_Left, width: 12, key_text_size: "16", key_back_color: b_gn, key_text_color: t_enter}
+      - {click: Keyboard_markdown_Excel_Middle, width: 12, key_text_size: "16", key_back_color: b_gn, key_text_color: t_enter}
+      - {click: Keyboard_markdown_Excel_Right, width: 12, key_text_size: "16", key_back_color: key_back_color, key_text_color: t_enter}
+      - {click: Keyboard_markdown_more, width: 12, key_text_size: "16", key_back_color: b_gn, key_text_color: t_gn}
+      #- {click: BackSpace, swipe_right: Delete, width: 17, key_back_color: b_bs, key_text_color: t_bs}
+      - {click: Return, width: 16, key_text_size: "16", key_back_color: b_enter, key_text_color: t_enter}
 
   markdown_more:
     author: "csjtl"
@@ -1800,15 +2211,16 @@ preset_keyboards:
 
       - {click: Key_null, height: *keyb_nullline_h, width: 100, key_back_color: *ubuntu_o, key_text_color: *ubuntu_o}
 
-      - {click: Keyboard_default, height: *keyb_foot_h, width: 17, key_text_size: "16", key_back_color: b_enter, key_text_color: t_enter}
-      - {click: Keyboard_markdown_Common, width: 11, key_text_size: "16", key_back_color: b_gn, key_text_color: t_gn}
-      - {click: Keyboard_markdown_Title, width: 11, key_text_size: "16", key_back_color: b_gn, key_text_color: t_gn}
-      - {click: Keyboard_markdown_Block, width: 11, key_text_size: "16", key_back_color: b_gn, key_text_color: t_gn}
-      - {click: Keyboard_markdown_Content, width: 11, key_text_size: "16", key_back_color: b_gn, key_text_color: t_gn}
-      - {click: Keyboard_markdown_Highlight, width: 11, key_text_size: "16", key_back_color: b_gn, key_text_color: t_gn}
-      - {click: Keyboard_markdown_more, width: 11, key_text_size: "16", key_back_color: key_back_color, key_text_color: t_enter}
-      - {click: BackSpace, swipe_right: Delete, width: 17, key_back_color: b_bs, key_text_color: t_bs}
-      #- {click: Return, width: 17, key_text_size: "16", key_back_color: b_enter, key_text_color: t_enter}
+      - {click: Keyboard_default, height: *keyb_foot_h, width: 16, key_text_size: "16", key_back_color: b_enter, key_text_color: t_enter}
+      - {click: Keyboard_markdown_Common, width: 12, key_text_size: "16", key_back_color: b_gn, key_text_color: t_gn}
+      - {click: Keyboard_markdown_Title, width: 12, key_text_size: "16", key_back_color: b_gn, key_text_color: t_gn}
+      - {click: Keyboard_markdown_Block, width: 12, key_text_size: "16", key_back_color: b_gn, key_text_color: t_gn}
+      - {click: Keyboard_markdown_Content, width: 12, key_text_size: "16", key_back_color: b_gn, key_text_color: t_gn}
+      - {click: Keyboard_markdown_Highlight, width: 12, key_text_size: "16", key_back_color: b_gn, key_text_color: t_gn}
+      - {click: Keyboard_markdown_Excel, width: 12, key_text_size: "16", key_back_color: b_gn, key_text_color: t_enter}
+      - {click: Keyboard_markdown_more, width: 12, key_text_size: "16", key_back_color: key_back_color, key_text_color: t_enter}
+      #- {click: BackSpace, swipe_right: Delete, width: 17, key_back_color: b_bs, key_text_color: t_bs}
+      #- {click: Return, width: 16, key_text_size: "16", key_back_color: b_enter, key_text_color: t_enter}
 
   app_keys:
     #ascii_mode: 1
