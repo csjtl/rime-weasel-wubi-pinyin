@@ -6,6 +6,11 @@
 
 - 功能:
   1. 编辑 markdown 键盘布局
+    标题
+    区块--占据两行及以上，分割等内容的
+    内容--单行内容
+    高亮--突出重要内容
+    表格--默认，左对齐，居中，右对齐
   2. 英文语法词典
   3. 表情词典
   4. 新世纪五笔键盘按键码元助记
@@ -164,11 +169,19 @@ trime.yaml
     - 颜文字
     ![颜文字](https://github.com/csjtl/rime-NewCenturyWubi-rimerc/assets/55336802/62627ce4-37e4-48d2-be73-c1b3f87f4418)
     - markdown
+    自定义添加常用
     ![markdown](https://github.com/user-attachments/assets/a00e4a58-51ef-491a-8f06-6105b6840d52)
+    标题
     ![markdown](https://github.com/user-attachments/assets/b694d3c5-f0be-4347-bdc5-a8ba44373df4)
+    区块--占据两行及以上，分割等内容的
     ![markdown](https://github.com/user-attachments/assets/2e6a7b8e-e0fc-44d6-b7bb-0711dda680d1)
+    内容--单行内容
     ![markdown](https://github.com/user-attachments/assets/00c4359c-d3e8-47e4-80b2-706ea3e4e352)
+    高亮--突出重要内容
     ![markdown](https://github.com/user-attachments/assets/fb563496-6ff4-47fb-a547-72b1b2e0bd75)
+    表格--默认，左对齐，居中，右对齐
+
+    全部
     ![markdown](https://github.com/user-attachments/assets/cefc4d9f-982e-45de-9906-b0ea240a98d6)
 
 2. TGboard.trime.yaml 初装快速布局调整
